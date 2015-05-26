@@ -4,18 +4,8 @@
   'use strict';
 
   var Notifications = function() {
+    var self = self;
     var subscribers = {};
-
-    this.subscribe = function(id, cb) {
-      if (!subscribers[id]) {
-        subscribers[id] = {
-          pending: 0,
-          callbacks: [cb]
-        };
-      } else {
-        subscribers[id].callbacks.add(cb);
-      }
-    };
 
     var _notify = function(id) {
       if (subscribers[id]) {
@@ -35,32 +25,43 @@
       return number;
     };
 
-    this.setNotifications = function(id, number) {
+    self.subscribe = function(id, cb) {
+      if (!subscribers[id]) {
+        subscribers[id] = {
+          pending: 0,
+          callbacks: [cb]
+        };
+      } else {
+        subscribers[id].callbacks.add(cb);
+      }
+    };
+
+    self.setNotifications = function(id, number) {
       subscribers[id].pending = _clip(number);
       _notify(id);
     };
 
-    this.clearNotifications = function(id) {
+    self.clearNotifications = function(id) {
       subscribers[id].pending = 0;
       _notify(id);
     };
 
-    this.addNotifications = function(id, number) {
+    self.addNotifications = function(id, number) {
       subscribers[id].pending += number;
       _notify(id);
     };
 
-    this.addNotification = function(id) {
-      this.addNotifications(id, 1);
+    self.addNotification = function(id) {
+      self.addNotifications(id, 1);
     };
 
-    this.removeNotifications = function(id, number) {
+    self.removeNotifications = function(id, number) {
       subscribers[id].pending = _clip(subscribers[id].pending - number);
       _notify(id);
     };
 
-    this.removeNotification = function(id) {
-      this.removeNotifications(id, 1);
+    self.removeNotification = function(id) {
+      self.removeNotifications(id, 1);
     };
   };
 
