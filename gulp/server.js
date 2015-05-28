@@ -40,7 +40,7 @@ module.exports = function(options) {
     browserSyncInit([options.tmp + '/serve', options.src, options.app]);
   });
 
-  gulp.task('serve:dist', ['build'], function () {
-    browserSyncInit(options.dist);
+  gulp.task('serve:dist', ['build', 'watch:dist'], function () {
+    browserSyncInit([options.tmp + '/serve', options.dist, options.app]);
   });
 };
