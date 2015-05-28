@@ -10,11 +10,11 @@ function isOnlyChange(event) {
 module.exports = function(options) {
   gulp.task('watch', ['inject'], function () {
 
-    gulp.watch([options.src + '/*.html', 'bower.json'], ['inject']);
+    gulp.watch([options.app + '/*.html', 'bower.json'], ['inject']);
 
     gulp.watch([
-      options.src + '/app/**/*.css',
-      options.src + '/app/**/*.less'
+      options.src + '/**/*.less',
+      options.app + '/**/*.css'
     ], function(event) {
       if(isOnlyChange(event)) {
         gulp.start('styles');
@@ -23,7 +23,7 @@ module.exports = function(options) {
       }
     });
 
-    gulp.watch(options.src + '/app/**/*.js', function(event) {
+    gulp.watch([options.src + '/**/*.js', options.app + '/**/*.js'], function(event) {
       if(isOnlyChange(event)) {
         gulp.start('scripts');
       } else {
@@ -31,7 +31,7 @@ module.exports = function(options) {
       }
     });
 
-    gulp.watch(options.src + '/app/**/*.html', function(event) {
+    gulp.watch([options.src + '/**/*.html', options.app + '/**/*.html'], function(event) {
       browserSync.reload(event.path);
     });
   });

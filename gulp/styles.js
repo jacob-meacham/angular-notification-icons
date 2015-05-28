@@ -12,7 +12,7 @@ module.exports = function(options) {
     var lessOptions = {
       options: [
         'bower_components',
-        options.src + '/app'
+        options.src
       ]
     };
 

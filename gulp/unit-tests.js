@@ -18,16 +18,15 @@ module.exports = function(options) {
     var bowerDeps = wiredep(wiredepOptions);
 
     var specFiles = [
-      options.src + '/**/*.spec.js',
-      options.src + '/**/*.mock.js'
+      options.src + '/**/*.spec.js'
     ];
 
     var htmlFiles = [
-      options.src + '/**/*.html'
+      options.src + '/**/*.html',
     ];
 
     var srcFiles = [
-      options.src + '/app/**/*.js'
+      options.src + '/**/*.js'
     ].concat(specFiles.map(function(file) {
       return '!' + file;
     }));

@@ -9,8 +9,8 @@ var $ = require('gulp-load-plugins')({
 module.exports = function(options) {
   gulp.task('partials', function () {
     return gulp.src([
-      options.src + '/app/**/*.html',
-      options.tmp + '/serve/app/**/*.html'
+      options.src + '/**/*.html',
+      options.tmp + '/serve/**/*.html'
     ])
       .pipe($.minifyHtml({
         empty: true,
@@ -18,7 +18,7 @@ module.exports = function(options) {
         quotes: true
       }))
       .pipe($.angularTemplatecache('templateCacheHtml.js', {
-        module: 'angularNotifications',
+        module: 'angular-notifications',
         root: 'app'
       }))
       .pipe(gulp.dest(options.tmp + '/partials/'));
