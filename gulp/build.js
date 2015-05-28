@@ -1,19 +1,12 @@
 'use strict';
 
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
 
 module.exports = function(options) {
-  gulp.task('lint', function() {
-    gulp.src(['src/**/*.js', 'gulpfile.js', 'gulp/*.js'])
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
-  });
-
   gulp.task('partials', function () {
     return gulp.src([
       options.src + '/app/**/*.html',
@@ -91,5 +84,5 @@ module.exports = function(options) {
     $.del([options.dist + '/', options.tmp + '/'], done);
   });
 
-  gulp.task('build', ['lint', 'html', 'fonts', 'other']);
+  gulp.task('build', ['html', 'fonts', 'other']);
 };

@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 
-require('gulp-load-plugins')();
+var $ = require('gulp-load-plugins')();
 
 var wiredep = require('wiredep');
 var karma = require('karma');

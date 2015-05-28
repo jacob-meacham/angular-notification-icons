@@ -50,7 +50,7 @@
         "module": null
       },
       "paths": {
-        "src": "src",
+        "src": "app",
         "dist": "dist",
         "e2e": "e2e",
         "tmp": ".tmp"
