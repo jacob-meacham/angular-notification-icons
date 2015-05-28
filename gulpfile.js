@@ -17,7 +17,7 @@ var options = {
   },
   wiredep: {
     directory: 'bower_components',
-    exclude: [/jquery/]
+    devDependencies: true
   }
 };
 

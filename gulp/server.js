@@ -6,17 +6,17 @@ var browserSyncSpa = require('browser-sync-spa');
 
 var util = require('util');
 
-var middleware = require('./proxy');
-
 module.exports = function(options) {
 
   function browserSyncInit(baseDir, browser) {
     browser = browser === undefined ? 'default' : browser;
 
+    console.log(baseDir);
     var routes = null;
     if(baseDir === options.src || (util.isArray(baseDir) && baseDir.indexOf(options.src) !== -1)) {
       routes = {
-        '/bower_components': 'bower_components'
+        '/bower_components': 'bower_components',
+        '/app': 'app'
       };
     }
 
@@ -24,10 +24,6 @@ module.exports = function(options) {
       baseDir: baseDir,
       routes: routes
     };
-
-    if(middleware.length > 0) {
-      server.middleware = middleware;
-    }
 
     browserSync.instance = browserSync.init({
       startPath: '/',
