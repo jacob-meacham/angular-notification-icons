@@ -4,7 +4,7 @@
   'use strict';
 
   var Notifications = function() {
-    var self = self;
+    var self = this;
     var subscribers = {};
 
     var _notify = function(id) {

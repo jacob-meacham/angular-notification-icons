@@ -55,6 +55,6 @@
   };
 
   angular.module('angular-notifications')
-    .controller('NotificationDirectiveController', ['Notifications', NotificationDirectiveController])
+    .controller('NotificationDirectiveController', ['NotificationsService', NotificationDirectiveController])
     .directive('notificationIcon', notificationDirective);
 }());
