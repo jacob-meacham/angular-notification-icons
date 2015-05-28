@@ -1,14 +1,13 @@
 'use strict';
 
-var app = angular.module('notificationsDemo', ['ngRoute', 'angular-notifications', 'notificationsDemo.controllers']);
+var app = angular.module('angular-notifications.demo', ['ngRoute', 'angular-notifications', 'angular-notifications.demo.controllers']);
 
 // Pre-define modules
-angular.module('notificationsDemo.controllers', []);
+angular.module('angular-notifications.demo.controllers', []);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider.
     when('/', {
-      templateUrl: '/partials/demo.html',
       controller: 'DemoController',
       controllerAs: 'vm'
     })
