@@ -1,0 +1,16 @@
+.angular-notifications-container {
+  position: relative;
+  display: table-cell;
+  width: 100%;
+}
+.angular-notifications-overlay {
+  position: absolute;
+  z-index: 1;
+}
+.angular-notifications-default-dot {
+  right: -10px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background: red;
+}
