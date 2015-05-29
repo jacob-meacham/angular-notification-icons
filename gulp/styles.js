@@ -5,8 +5,6 @@ var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
 
-var wiredep = require('wiredep').stream;
-
 module.exports = function(options) {
   gulp.task('styles', function () {
     var lessOptions = {
@@ -16,35 +14,7 @@ module.exports = function(options) {
       ]
     };
 
-    var injectFiles = gulp.src([
-      options.src + '/**/*.less',
-      '!' + options.src + '/app/index.less',
-      '!' + options.src + '/app/vendor.less'
-    ], { read: false });
-
-    var injectOptions = {
-      transform: function(filePath) {
-        filePath = filePath.replace(options.src + '/app/', '');
-        return '@import \'' + filePath + '\';';
-      },
-      starttag: '// injector',
-      endtag: '// endinjector',
-      addRootSlash: false
-    };
-
-    var indexFilter = $.filter('index.less');
-    var vendorFilter = $.filter('vendor.less');
-
-    return gulp.src([
-      options.src + '/app/index.less',
-      options.src + '/app/vendor.less'
-    ])
-      .pipe(indexFilter)
-      .pipe($.inject(injectFiles, injectOptions))
-      .pipe(indexFilter.restore())
-      .pipe(vendorFilter)
-      .pipe(wiredep(options.wiredep))
-      .pipe(vendorFilter.restore())
+    return gulp.src(options.src + '/**/*.less')
       .pipe($.sourcemaps.init())
       .pipe($.less(lessOptions)).on('error', options.errorHandler('Less'))
       .pipe($.autoprefixer()).on('error', options.errorHandler('Autoprefixer'))
