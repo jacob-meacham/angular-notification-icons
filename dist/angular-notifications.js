@@ -120,12 +120,14 @@
   var notificationDirective = function() {
     return {
       restrict: 'EA',
-      controller: 'NotificationDirectiveController',
-      controllerAs: 'notification',
-      bindToController: true,
-      link: function() {
-        // TODO: Add optional DOM event for clearing notifications
-      }
+      // controller: 'NotificationDirectiveController',
+      // controllerAs: 'notification',
+      // bindToController: true,
+      transclude: true,
+      templateUrl: 'templates/notification-icon.html'
+      // link: function() {
+      //   // TODO: Add optional DOM event for clearing notifications
+      // }
     };
   };
 
