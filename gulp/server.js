@@ -11,12 +11,13 @@ module.exports = function(options) {
   function browserSyncInit(baseDir, browser) {
     browser = browser === undefined ? 'default' : browser;
 
-    console.log(baseDir);
     var routes = null;
-    if(baseDir === options.src || (util.isArray(baseDir) && baseDir.indexOf(options.src) !== -1)) {
+    if(baseDir === options.app || (util.isArray(baseDir) && baseDir.indexOf(options.app) !== -1)) {
       routes = {
         '/bower_components': 'bower_components',
-        '/app': 'app'
+        '/app': 'app',
+        '/src': options.src,
+        '/dist': options.dist
       };
     }
 
@@ -37,10 +38,16 @@ module.exports = function(options) {
   }));
 
   gulp.task('serve', ['watch'], function () {
-    browserSyncInit([options.tmp + '/serve', options.src, options.app]);
+    browserSyncInit([options.tmp + '/serve', options.app]);
   });
 
-  gulp.task('serve:dist', ['build', 'watch:dist'], function () {
-    browserSyncInit([options.tmp + '/serve', options.dist, options.app]);
+  gulp.task('serve:dist', ['build'], function () {
+    gulp.start('watch:dist');
+    browserSyncInit([options.tmp + '/serve', options.app]);
+  });
+
+  gulp.task('serve:dist:min', ['build'], function () {
+    gulp.start('watch:dist:min');
+    browserSyncInit([options.tmp + '/serve', options.app]);
   });
 };

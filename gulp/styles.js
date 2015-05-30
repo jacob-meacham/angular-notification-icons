@@ -19,7 +19,7 @@ module.exports = function(options) {
       .pipe($.less(lessOptions)).on('error', options.errorHandler('Less'))
       .pipe($.autoprefixer()).on('error', options.errorHandler('Autoprefixer'))
       .pipe($.sourcemaps.write())
-      .pipe(gulp.dest(options.tmp + '/serve/app/'))
+      .pipe(gulp.dest(options.tmp + '/serve/'))
       .pipe(browserSync.reload({ stream: true }));
   });
 };
