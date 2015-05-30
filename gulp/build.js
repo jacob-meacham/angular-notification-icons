@@ -11,8 +11,9 @@ module.exports = function(options) {
     $.del([options.dist + '/', options.tmp + '/'], done);
   });
 
-  gulp.task('build', function() {
+  gulp.task('build', ['scripts:jshint'], function() {
     gulp.src(options.src + '/**/*.js')
+      .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'))
       .pipe($.concat('angular-notifications.js'))
       .pipe(gulp.dest(options.dist))
       .pipe($.uglify())
