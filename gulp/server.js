@@ -17,7 +17,8 @@ module.exports = function(options) {
         '/bower_components': 'bower_components',
         '/app': 'app',
         '/src': options.src,
-        '/dist': options.dist
+        '/dist': options.dist,
+        '/templates': options.src + '/templates'
       };
     }
 
