@@ -21,7 +21,7 @@ module.exports = function(options) {
   });
 
   gulp.task('build', ['scripts:jshint', 'templates'], function() {
-    gulp.src([options.src + '/**/*.js', options.tmp + '/templateCache/*.js'])
+    gulp.src([options.src + '/**/*.js', options.tmp + '/templateCache/*.js', '!' + options.src + '/**/*.spec.js'])
       .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'))
       .pipe($.concat('angular-notifications.js'))
       .pipe(gulp.dest(options.dist))
