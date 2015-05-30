@@ -48,9 +48,11 @@
       controller: 'NotificationDirectiveController',
       controllerAs: 'notification',
       bindToController: true,
-      link: function() {
-        // TODO: Add optional DOM event for clearing notifications
-      }
+      transclude: true,
+      templateUrl: 'templates/notification-icon.html'
+      // link: function() {
+      //   // TODO: Add optional DOM event for clearing notifications
+      // }
     };
   };
 
