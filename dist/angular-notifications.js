@@ -4,7 +4,16 @@ angular.module('angular-notifications', ['angular-notifications.tpls']);
 angular.module('angular-notifications.tpls', []);
 
 angular.module("angular-notifications.tpls").run(["$templateCache", function($templateCache) {$templateCache.put("template/notification-icon.html","<div class=\"angular-notifications-container\">\r\n    <div class=\"angular-notifications-overlay angular-notifications-default-dot\"></div>\r\n    <div class=\"notification-inner\">\r\n        <ng-transclude></ng-transclude>\r\n    </div>\r\n</div>");}]);
+'use strict';
 
+describe('NotificationService', function() {
+  beforeEach(module('angular-notificatios'));
+
+  it('should pass', function(done) {
+    true.should.eql(false);
+    done();
+  });
+});
 /* global angular */
 
 (function() {

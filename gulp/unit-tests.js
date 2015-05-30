@@ -2,12 +2,11 @@
 
 var gulp = require('gulp');
 
-var $ = require('gulp-load-plugins')();
-
 var wiredep = require('wiredep');
 var karma = require('karma');
 var concat = require('concat-stream');
 var _ = require('lodash');
+var $ = require('gulp-load-plugins')();
 
 module.exports = function(options) {
   function listFiles(callback) {
@@ -33,6 +32,7 @@ module.exports = function(options) {
 
 
     gulp.src(srcFiles)
+      .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'))
       .pipe(concat(function(files) {
         callback(bowerDeps.js
           .concat(_.pluck(files, 'path'))
