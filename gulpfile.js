@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var wrench = require('wrench');
+var coveralls = require('gulp-coveralls');
 
 var options = {
   app: 'app',
@@ -27,6 +28,11 @@ wrench.readdirSyncRecursive('./gulp').filter(function(file) {
   require('./gulp/' + file)(options);
 });
 
-gulp.task('default', ['clean'], function () {
+gulp.task('default', ['clean'], function() {
     gulp.start('build');
+});
+
+gulp.task('ci', ['build', 'test'], function() {
+  return gulp.src('build/coverage/**/lcov.info')
+    .pipe(coveralls());
 });
