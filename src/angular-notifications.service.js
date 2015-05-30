@@ -65,7 +65,7 @@
     };
   };
 
-  angular.module('angular-notifications', [])
+  angular.module('angular-notifications')
     .provider('NotificationsService', function() {
       this.$get = function() {
         return new Notifications();

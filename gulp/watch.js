@@ -45,7 +45,7 @@ module.exports = function(options) {
         htmlToWatch.push(srcDir + '/**/*.html');
       }
 
-      gulp.watch(htmlToWatch, function(event) {
+      return gulp.watch(htmlToWatch, function(event) {
         browserSync.reload(event.path);
       });
     };

@@ -1,3 +1,9 @@
+'use strict';
+
+angular.module('angular-notifications', ['angular-notifications.tpls']);
+angular.module('angular-notifications.tpls', []);
+
+angular.module("angular-notifications.tpls").run(["$templateCache", function($templateCache) {$templateCache.put("template/notification-icon.html","<div class=\"angular-notifications-container\">\r\n    <div class=\"angular-notifications-overlay angular-notifications-default-dot\"></div>\r\n    <div class=\"notification-inner\">\r\n        <ng-transclude></ng-transclude>\r\n    </div>\r\n</div>");}]);
 
 /* global angular */
 
@@ -66,7 +72,7 @@
     };
   };
 
-  angular.module('angular-notifications', [])
+  angular.module('angular-notifications')
     .provider('NotificationsService', function() {
       this.$get = function() {
         return new Notifications();
@@ -120,11 +126,11 @@
   var notificationDirective = function() {
     return {
       restrict: 'EA',
-      // controller: 'NotificationDirectiveController',
-      // controllerAs: 'notification',
-      // bindToController: true,
+      controller: 'NotificationDirectiveController',
+      controllerAs: 'notification',
+      bindToController: true,
       transclude: true,
-      templateUrl: 'templates/notification-icon.html'
+      templateUrl: 'template/notification-icon.html'
       // link: function() {
       //   // TODO: Add optional DOM event for clearing notifications
       // }

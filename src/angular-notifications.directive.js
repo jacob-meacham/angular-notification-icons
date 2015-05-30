@@ -49,7 +49,7 @@
       controllerAs: 'notification',
       bindToController: true,
       transclude: true,
-      templateUrl: 'templates/notification-icon.html'
+      templateUrl: 'template/notification-icon.html'
       // link: function() {
       //   // TODO: Add optional DOM event for clearing notifications
       // }

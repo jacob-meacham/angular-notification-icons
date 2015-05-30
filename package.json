@@ -13,7 +13,7 @@
     "del": "~1.1.1",
     "gulp": "~3.8.10",
     "gulp-angular-filesort": "~1.0.4",
-    "gulp-angular-templatecache": "~1.5.0",
+    "gulp-angular-templatecache": "^1.6.0",
     "gulp-autoprefixer": "~2.1.0",
     "gulp-concat": "^2.5.2",
     "gulp-csso": "~1.0.0",

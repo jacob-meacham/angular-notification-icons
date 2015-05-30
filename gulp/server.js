@@ -18,7 +18,7 @@ module.exports = function(options) {
         '/app': 'app',
         '/src': options.src,
         '/dist': options.dist,
-        '/templates': options.src + '/templates'
+        '/template': options.src + '/template'
       };
     }
 
@@ -42,13 +42,11 @@ module.exports = function(options) {
     browserSyncInit([options.tmp + '/serve', options.app]);
   });
 
-  gulp.task('serve:dist', ['build'], function () {
-    gulp.start('watch:dist');
+  gulp.task('serve:dist', ['build', 'watch:dist'], function () {
     browserSyncInit([options.tmp + '/serve', options.app]);
   });
 
-  gulp.task('serve:dist:min', ['build'], function () {
-    gulp.start('watch:dist:min');
+  gulp.task('serve:dist:min', ['build', 'watch:dist:min'], function () {
     browserSyncInit([options.tmp + '/serve', options.app]);
   });
 };
