@@ -1,16 +1,14 @@
 'use strict';
 
-var DemoController = function(NotificationsService) {
+var DemoController = function() {
   var vm = this;
 
-  vm.pending = 10;
-  NotificationsService.subscribe('first');
-  NotificationsService.setNotifications('first', 10);
+  vm.pending = 0;
 
   vm.addNotification = function() {
-    NotificationsService.addNotification('first');
+    vm.pending += 1;
   };
 };
 
 angular.module('angular-notifications.demo.controllers')
-  .controller('DemoController', ['NotificationsService', DemoController]);
+  .controller('DemoController', [DemoController]);

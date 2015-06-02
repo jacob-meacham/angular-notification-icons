@@ -3,14 +3,32 @@
   display: table-cell;
   width: 100%;
 }
-.angular-notifications-overlay {
+.angular-notifications-icon.overlay {
   position: absolute;
   z-index: 1;
 }
-.angular-notifications-default-dot {
+.angular-notifications-icon {
   right: -10px;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  min-width: 25px;
+  height: 25px;
   background: red;
+  color: white;
+}
+.angular-notifications-icon.wide-icon {
+  border-radius: "20% / 50%";
+}
+.angular-notifications-icon.pop {
+  -webkit-transition: 0.5s linear all;
+          transition: 0.5s linear all;
+}
+.angular-notifications-icon.pop-add {
+  opacity: 0;
+}
+.angular-notifications-icon.pop-add-active {
+  opacity: 1;
 }
