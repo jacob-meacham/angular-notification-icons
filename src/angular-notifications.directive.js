@@ -45,6 +45,14 @@
   var notificationDirective = function() {
     return {
       restrict: 'EA',
+      scope: {
+        appearAnimation: '=',
+        disappearAnimation: '=',
+        addAnimation: '=',
+        removeTrigger: '=',
+        initialCount: '=',
+        hideCount: '='
+      },
       controller: 'NotificationDirectiveController',
       controllerAs: 'notification',
       bindToController: true,
