@@ -22,13 +22,17 @@
     <![endif]-->
 
     <div class="container" ng-controller="DemoController as vm">
-      <notification-icon appear-animation='pop' update-animation='pop' count='vm.pending'>
+      <notification-icon appear-animation='pop' update-animation='pop' count='vm.pending[0]'>
         <i class="fa fa-globe fa-3x"></i>
-      </notification-icon>  
+      </notification-icon>
 
-      {{vm.pending}}
+      <notification-icon animation='none' count='vm.pending[0]'>
+        <i class="fa fa-globe fa-3x"></i>
+      </notification-icon>
 
-      <button class="btn btn-default" id="first" ng-click="vm.addNotification()">Add Notification</button>
+      <button class="btn btn-default" id="first" ng-click="vm.pending[0] = vm.pending[0] + 1">Add Notification</button>
+
+      <button class="btn btn-default" id="first" ng-click="vm.pending[0] = 0">Clear Notifications</button>
     </div>
     
     <!-- bower:js -->
