@@ -18,17 +18,22 @@
   height: 25px;
   background: red;
   color: white;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
 }
 .angular-notifications-icon.wide-icon {
-  border-radius: "20% / 50%";
+  border-radius: 30% / 50%;
 }
-.angular-notifications-icon.pop {
+.angular-notifications-icon.fade {
   -webkit-transition: 0.5s linear all;
           transition: 0.5s linear all;
 }
-.angular-notifications-icon.pop-add {
+.angular-notifications-icon.fade-add {
   opacity: 0;
 }
-.angular-notifications-icon.pop-add-active {
+.angular-notifications-icon.fade-add-active {
   opacity: 1;
 }
