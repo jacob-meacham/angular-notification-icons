@@ -3,9 +3,13 @@
 var DemoController = function(NotificationsService) {
   var vm = this;
 
-  vm.notifications = 0;
+  vm.pending = 10;
   NotificationsService.subscribe('first');
-  NotificationsService.setNotifications('first', vm.notifications);
+  NotificationsService.setNotifications('first', 10);
+
+  vm.addNotification = function() {
+    NotificationsService.addNotification('first');
+  };
 };
 
 angular.module('angular-notifications.demo.controllers')

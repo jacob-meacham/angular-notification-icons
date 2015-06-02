@@ -21,10 +21,14 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container" ng-controller="DemoController">
-      <notification-icon>
+    <div class="container" ng-controller="DemoController as vm">
+      <notification-icon appear-animation='pop'>
         <i class="fa fa-globe fa-3x"></i>
       </notification-icon>  
+
+      {{vm.pending}}
+
+      <button class="btn btn-default" id="first" ng-click="vm.addNotification()">Add Notification</button>
     </div>
     
     <!-- bower:js -->

@@ -3,26 +3,42 @@
 (function() {
   'use strict';
 
-  var NotificationDirectiveController = function(notificationService) {
+  var NotificationDirectiveController = function($animate, notificationService) {
     var self = this;
 
-    self.visible = false;
     self.pending = 0;
 
+    self.init = function(element) {
+      self.$element = element.find('.angular-notifications-icon');
+      console.log(self.$element);
+    };
+
     var appear = function() {
-      self.visible = true;
-      // TODO: Play intro animation, if requested
+      $animate.addClass(self.$element, 'visible');
+      if (self.appearAnimation) {
+        $animate.addClass(self.$element, self.appearAnimation).then(function() {
+          self.$element.removeClass(self.appearAnimation);
+        });
+      }
       // TODO: Play sound, if requested
     };
 
     var clear = function() {
-      self.visible = false;
-      // TODO: Play outro animation, if requested
+      $animate.removeClass(self.$element, 'visible');
+      if (self.disappearAnimation) {
+        $animate.addClass(self.$element, self.disappearAnimation).then(function() {
+          self.$element.removeClass(self.disappearAnimation);
+        });
+      }
     };
 
     var update = function() {
-      // TODO: Play update animation, if requested
-      // TODO: Play sound, if requested
+      self.updateAnimation = 'pop';
+      if (self.updateAnimation) {
+        $animate.addClass(self.$element, self.updateAnimation).then(function() {
+          self.$element.removeClass(self.updateAnimation);
+        });
+      }
     };
 
     // TODO: Bind to notification service pending amount?
@@ -36,7 +52,7 @@
       update();
     };
 
-    notificationService.subscribe(self.id, notificationCallback);
+    notificationService.subscribe('first', notificationCallback);
     if (self.initialAmount) {
       notificationService.setNotifications(self.initialAmount);
     }
@@ -46,25 +62,25 @@
     return {
       restrict: 'EA',
       scope: {
-        appearAnimation: '=',
-        disappearAnimation: '=',
-        addAnimation: '=',
-        removeTrigger: '=',
-        initialCount: '=',
-        hideCount: '='
+        appearAnimation: '=?',
+        disappearAnimation: '=?',
+        updateAnimation: '=?',
+        removeTrigger: '=?',
+        initialCount: '=?',
+        hideCount: '=?'
       },
       controller: 'NotificationDirectiveController',
       controllerAs: 'notification',
       bindToController: true,
       transclude: true,
-      templateUrl: 'template/notification-icon.html'
-      // link: function() {
-      //   // TODO: Add optional DOM event for clearing notifications
-      // }
+      templateUrl: 'template/notification-icon.html',
+      link: function(scope, element, attrs, ctrl) {
+        ctrl.init(element);
+      }
     };
   };
 
   angular.module('angular-notifications')
-    .controller('NotificationDirectiveController', ['NotificationsService', NotificationDirectiveController])
+    .controller('NotificationDirectiveController', ['$animate', 'NotificationsService', NotificationDirectiveController])
     .directive('notificationIcon', notificationDirective);
 }());

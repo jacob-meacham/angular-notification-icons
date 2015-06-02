@@ -32,7 +32,7 @@
           callbacks: [cb]
         };
       } else {
-        subscribers[id].callbacks.add(cb);
+        subscribers[id].callbacks.push(cb);
       }
     };
 
