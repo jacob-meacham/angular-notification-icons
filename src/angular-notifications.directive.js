@@ -10,11 +10,17 @@
     var animationSet = {
       appear: self.appearAnimation || self.animation || 'pop',
       update: self.updateAnimation || self.animation || 'pop',
-      disappear: self.disappearAnimation || self.animation
+      disappear: self.disappearAnimation
     };
 
     self.init = function(element) {
       self.$element = element.find('.angular-notifications-icon');
+      if (self.clearTrigger) {
+        element.on(self.clearTrigger, function() {
+          self.count = 0;
+          $scope.$apply();
+        });
+      }
     };
 
     var handleAnimation = function(animationClass) {
@@ -68,7 +74,7 @@
         appearAnimation: '@',
         disappearAnimation: '@',
         updateAnimation: '@',
-        removeTrigger: '@'
+        clearTrigger: '@'
       },
       controller: 'NotificationDirectiveController',
       controllerAs: 'notification',
