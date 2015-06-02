@@ -32,7 +32,7 @@
     };
 
     var clear = function() {
-      self.visible = true;
+      self.visible = false;
       handleAnimation(animationSet.disappear);
     };
 
@@ -47,6 +47,13 @@
         clear();
       } else {
         update();
+      }
+
+      // Use more of a pill shape if the count is high enough.
+      if (self.count > 100) {
+        self.$element.addClass('wide-icon');
+      } else {
+        self.$element.removeClass('wide-icon');
       }
     });
   };
