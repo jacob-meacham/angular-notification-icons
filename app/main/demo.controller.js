@@ -3,11 +3,7 @@
 var DemoController = function() {
   var vm = this;
 
-  vm.pending = 0;
-
-  vm.addNotification = function() {
-    vm.pending += 1;
-  };
+  vm.pending = [0];
 };
 
 angular.module('angular-notifications.demo.controllers')
