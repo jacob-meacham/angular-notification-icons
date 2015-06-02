@@ -40,7 +40,7 @@ module.exports = function(options) {
         }
       });
 
-      var htmlToWatch = [options.app + '/**/*.html'];
+      var htmlToWatch = [options.app + '/*.html'];
       if (watchOptions.watchSrcHtml) {
         htmlToWatch.push(srcDir + '/**/*.html');
       }
