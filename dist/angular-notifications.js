@@ -9,15 +9,18 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
 (function() {
   'use strict';
 
-  var NotificationDirectiveController = function($scope, $animate) {
+  var NotificationDirectiveController = function($scope, $animate, $q) {
     var self = this;
     self.visible = false;
+    self.wideThreshold = self.wideThreshold || 100;
 
     var animationSet = {
-      appear: self.appearAnimation || self.animation || 'pop',
-      update: self.updateAnimation || self.animation || 'pop',
+      appear: self.appearAnimation || self.animation || 'grow',
+      update: self.updateAnimation || self.animation || 'grow',
       disappear: self.disappearAnimation
     };
+
+    console.log(animationSet);
 
     self.init = function(element) {
       self.$element = element.find('.angular-notifications-icon');
@@ -31,10 +34,13 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
 
     var handleAnimation = function(animationClass) {
       if (animationClass) {
-        $animate.addClass(self.$element, animationClass).then(function() {
+        return $animate.addClass(self.$element, animationClass).then(function() {
           self.$element.removeClass(animationClass);
+          return true;
         });
       }
+
+      return $q.when(false);
     };
 
     var appear = function() {
@@ -44,8 +50,12 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
     };
 
     var clear = function() {
-      self.visible = false;
-      handleAnimation(animationSet.disappear);
+      handleAnimation(animationSet.disappear).then(function(needsDigest) {
+        self.visible = false;
+        if (needsDigest) {
+          $scope.$apply();
+        }
+      });
     };
 
     var update = function() {
@@ -62,7 +72,7 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
       }
 
       // Use more of a pill shape if the count is high enough.
-      if (self.count > 100) {
+      if (self.count > self.wideThreshold) {
         self.$element.addClass('wide-icon');
       } else {
         self.$element.removeClass('wide-icon');
@@ -80,7 +90,8 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
         appearAnimation: '@',
         disappearAnimation: '@',
         updateAnimation: '@',
-        clearTrigger: '@'
+        clearTrigger: '@',
+        wideThreshold: '@'
       },
       controller: 'NotificationDirectiveController',
       controllerAs: 'notification',
@@ -94,6 +105,6 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
   };
 
   angular.module('angular-notifications')
-    .controller('NotificationDirectiveController', ['$scope', '$animate', NotificationDirectiveController])
+    .controller('NotificationDirectiveController', ['$scope', '$animate', '$q', NotificationDirectiveController])
     .directive('notificationIcon', notificationDirective);
 }());
