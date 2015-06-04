@@ -1,0 +1,71 @@
+<!doctype html>
+<html ng-app="angular-notifications.demo">
+  <head>
+    <meta charset="utf-8">
+    <title>angularNotifications</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container" ng-controller="DemoController as vm">
+      <notification-icon appear-animation='fade' update-animation='fade' count='vm.pending[0]' clear-trigger='click'>
+        <i class="fa fa-globe fa-3x"></i>
+      </notification-icon>
+
+      <notification-icon animation='grow' count='vm.pending[0]' clear-trigger='click'>
+        <i class="fa fa-globe fa-3x"></i>
+      </notification-icon>
+
+      <notification-icon animation='bounce' count='vm.pending[0]' clear-trigger='click'>
+        <i class="fa fa-globe fa-3x"></i>
+      </notification-icon>
+
+      <notification-icon animation='shake' count='vm.pending[0]' clear-trigger='click'>
+        <i class="fa fa-globe fa-3x"></i>
+      </notification-icon>
+
+      <notification-icon animation='none' count='vm.pending[0]'>
+        <i class="fa fa-globe fa-3x"></i>
+      </notification-icon>
+
+      <notification-icon animation='none' appear-animation='grow' disappear-animation='grow' count='vm.pending[0]' hide-count="true">
+        <i class="fa fa-globe fa-3x"></i>
+      </notification-icon>
+
+      <notification-icon ng-init='vm.mycount' count='vm.mycount'>
+        <button class="btn btn-default" ng-click="vm.mycount = vm.mycount + 1">Messages</button>
+      </notification-icon>
+
+      <button class="btn btn-default" id="first" ng-click="vm.pending[0] = vm.pending[0] + 1">Add Notification</button>
+
+      <button class="btn btn-default" id="first" ng-click="vm.pending[0] = 0">Clear Notifications</button>
+    </div>
+    
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+
+  </body>
+</html>
