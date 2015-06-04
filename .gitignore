@@ -1,5 +1,4 @@
 node_modules/
-bower_components/
 .sass-cache/
 .tmp/
 npm-debug.log
