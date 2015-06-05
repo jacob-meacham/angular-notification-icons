@@ -50,6 +50,12 @@
         <button class="btn btn-default" ng-click="vm.mycount = vm.mycount + 1">Messages</button>
       </notification-icon>
 
+      <div class="custom-style">
+        <notification-icon animation='my-custom-animation' count='vm.pending[0]'>
+          <i class="fa fa-globe fa-3x"></i>
+        </notification-icon>
+      </div>
+
       <button class="btn btn-default" id="first" ng-click="vm.pending[0] = vm.pending[0] + 1">Add Notification</button>
 
       <button class="btn btn-default" id="first" ng-click="vm.pending[0] = 0">Clear Notifications</button>
