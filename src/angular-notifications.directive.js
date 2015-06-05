@@ -40,7 +40,6 @@
     var appear = function() {
       self.visible = true;
       handleAnimation(animationSet.appear);
-      // TODO: Play sound, if requested
     };
 
     var clear = function() {
