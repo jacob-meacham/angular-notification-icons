@@ -1,3 +1,7 @@
+notification-icon {
+  padding: 10px;
+}
+
 .custom-style .angular-notifications-icon {
   left: -10px;
   background: yellow;
