@@ -8,13 +8,12 @@
     self.visible = false;
     self.wideThreshold = self.wideThreshold || 100;
 
+    var animationPromise;
     var animationSet = {
       appear: self.appearAnimation || self.animation || 'grow',
       update: self.updateAnimation || self.animation || 'grow',
       disappear: self.disappearAnimation
     };
-
-    console.log(animationSet);
 
     self.init = function(element) {
       self.$element = element.find('.angular-notifications-icon');
@@ -27,11 +26,21 @@
     };
 
     var handleAnimation = function(animationClass) {
+      // TODO: Don't interrupt the animation?
       if (animationClass) {
-        return $animate.addClass(self.$element, animationClass).then(function() {
+        if (animationPromise) {
+          $animate.cancel(animationPromise);
+        }
+
+        // Can't chain because the chained promise doesn't have a cancel function.
+        animationPromise = $animate.addClass(self.$element, animationClass);
+        console.log(animationPromise);
+        animationPromise.then(function() {
           self.$element.removeClass(animationClass);
-          return true;
+          return $q.when(true);
         });
+        
+        return animationPromise;
       }
 
       return $q.when(false);
