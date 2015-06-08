@@ -33,7 +33,6 @@ var DemoController = function($interval) {
       }
     }, delay);
   };
-  
 
   vm.autoPending = [0, 0];
   autoCounter(0, 1, 4, 1000);
@@ -45,5 +44,33 @@ var DemoController = function($interval) {
 '<script src="bower_components/angular-notifications/angular-notifications.min.js"></script>';
 };
 
+var GifController = function($interval) {
+  var vm = this;
+
+  vm.autoPending = [0, 0, 0, 0];
+
+  $interval(function() {
+    vm.autoPending[0] = 1;
+  }, 5000, 1);
+  $interval(function() {
+    vm.autoPending[1] = 1;
+  }, 5800, 1);
+  $interval(function() {
+    vm.autoPending[2] = 1;
+  }, 6600, 1);
+  $interval(function() {
+    vm.autoPending[3] = 1;
+  }, 7400, 1);
+
+  $interval(function() {
+    vm.autoPending[0] = 2;
+    vm.autoPending[1] = 2;
+    vm.autoPending[2] = 2;
+    vm.autoPending[3] = 2;
+  }, 8400, 1);
+};
+
+
 angular.module('angular-notifications.demo.controllers')
-  .controller('DemoController', ['$interval', DemoController]);
+  .controller('DemoController', ['$interval', DemoController])
+  .controller('GifController', ['$interval', GifController]);
