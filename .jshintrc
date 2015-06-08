@@ -1,0 +1,18 @@
+{
+    "node": true, // Enable globals available when code is running inside of the NodeJS runtime environment.
+    "browser": true, // Standard browser globals e.g. `window`, `document`.
+    "eqeqeq": true, // Require triple equals i.e. `===`.
+    "newcap": true, // Require capitalization of all constructor functions e.g. `new F()`.
+    "noarg": true, // Prohibit use of `arguments.caller` and `arguments.callee`.
+    "quotmark": "single", // Define quotes to string values.
+    "regexp": true, // Prohibit `.` and `[^...]` in regular expressions.
+    "undef": true, // Require all non-global variables be declared before they are used.
+    "unused": true, // Warn unused variables.
+    "strict": true, // Require `use strict` pragma in every file.
+    "trailing": true, // Prohibit trailing whitespaces.
+    "devel": true, // Allow development statements e.g. `console.log();`.
+    "noempty": true, // Prohibit use of empty blocks.
+    "globals": {
+        "angular": false
+    }
+}

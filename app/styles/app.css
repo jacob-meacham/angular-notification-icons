@@ -1,0 +1,54 @@
+notification-icon {
+  padding: 10px;
+}
+
+.page-header h1 {
+  font-size: 48px;
+  margin-bottom: 5px;
+}
+
+.page-header a {
+  font-weight: bold;
+}
+
+.custom-style .angular-notifications-icon {
+  left: -10px;
+  background: yellow;
+  color: black;
+  width: 30px;
+  height: 30px;
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+.animations .row {
+  text-align: center;
+}
+
+.animations notification-icon {
+  display: table;
+  margin: 0 auto;
+}
+
+.buttons {
+  padding-top: 20px;
+}
+
+.code {
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.angular-notifications-icon.my-custom-animation {
+  transition:0.5s linear all;
+}
+
+.angular-notifications-icon.my-custom-animation-add {
+  background: black;
+  color: white;
+}
+
+.angular-notifications-icon.my-custom-animation-add-active {
+  background: yellow;
+  color: black;
+}
