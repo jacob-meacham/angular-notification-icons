@@ -5,7 +5,7 @@ Add notification popups to any element http://jemonjam.com/angular-notifications
 [![Coverage Status](https://coveralls.io/repos/jacob-meacham/angular-notifications/badge.svg?branch=develop)](https://coveralls.io/r/jacob-meacham/angular-notifications?branch=develop)
 [![Code Climate](https://codeclimate.com/github/jacob-meacham/grunt-lcov-merge/badges/gpa.svg)](https://codeclimate.com/github/jacob-meacham/grunt-lcov-merge)
 
-![demo](http://i.imgur.com/t6q2wqq.gif)
+![demo](http://i.imgur.com/F9qc7Uw.gif)
 
 ```js
 <notification-icon count='scopeVariable'>
