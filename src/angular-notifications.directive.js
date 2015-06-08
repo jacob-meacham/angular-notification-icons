@@ -34,7 +34,6 @@
 
         // Can't chain because the chained promise doesn't have a cancel function.
         animationPromise = $animate.addClass(self.$element, animationClass);
-        console.log(animationPromise);
         animationPromise.then(function() {
           self.$element.removeClass(animationClass);
           return $q.when(true);
@@ -74,7 +73,7 @@
       }
 
       // Use more of a pill shape if the count is high enough.
-      if (self.count > self.wideThreshold) {
+      if (self.count >= self.wideThreshold) {
         self.$element.addClass('wide-icon');
       } else {
         self.$element.removeClass('wide-icon');

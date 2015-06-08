@@ -14,13 +14,12 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
     self.visible = false;
     self.wideThreshold = self.wideThreshold || 100;
 
+    var animationPromise;
     var animationSet = {
       appear: self.appearAnimation || self.animation || 'grow',
       update: self.updateAnimation || self.animation || 'grow',
       disappear: self.disappearAnimation
     };
-
-    console.log(animationSet);
 
     self.init = function(element) {
       self.$element = element.find('.angular-notifications-icon');
@@ -33,11 +32,20 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
     };
 
     var handleAnimation = function(animationClass) {
+      // TODO: Don't interrupt the animation?
       if (animationClass) {
-        return $animate.addClass(self.$element, animationClass).then(function() {
+        if (animationPromise) {
+          $animate.cancel(animationPromise);
+        }
+
+        // Can't chain because the chained promise doesn't have a cancel function.
+        animationPromise = $animate.addClass(self.$element, animationClass);
+        animationPromise.then(function() {
           self.$element.removeClass(animationClass);
-          return true;
+          return $q.when(true);
         });
+        
+        return animationPromise;
       }
 
       return $q.when(false);
@@ -46,7 +54,6 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
     var appear = function() {
       self.visible = true;
       handleAnimation(animationSet.appear);
-      // TODO: Play sound, if requested
     };
 
     var clear = function() {
@@ -72,7 +79,7 @@ angular.module("angular-notifications.tpls").run(["$templateCache", function($te
       }
 
       // Use more of a pill shape if the count is high enough.
-      if (self.count > self.wideThreshold) {
+      if (self.count >= self.wideThreshold) {
         self.$element.addClass('wide-icon');
       } else {
         self.$element.removeClass('wide-icon');
