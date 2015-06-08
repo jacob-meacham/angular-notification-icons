@@ -37,6 +37,6 @@ module.exports = function(options) {
     };
   };
   gulp.task('inject', ['scripts', 'styles'], inject(options.src));
-  gulp.task('inject:dist', inject(options.dist, {srcStyles: options.dist + '/angular-notifications.css', srcJs: options.dist + '/angular-notifications.js'}));
-  gulp.task('inject:dist:min', inject(options.dist, {srcStyles: options.dist + '/angular-notifications.min.css', srcJs: options.dist + '/angular-notifications.min.js'}));
+  gulp.task('inject:dist', inject(options.dist, {srcStyles: options.dist + '/angular-notification-icons.css', srcJs: options.dist + '/angular-notification-icons.js'}));
+  gulp.task('inject:dist:min', inject(options.dist, {srcStyles: options.dist + '/angular-notification-icons.min.css', srcJs: options.dist + '/angular-notification-icons.min.js'}));
 };

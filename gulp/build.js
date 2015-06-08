@@ -16,28 +16,28 @@ module.exports = function(options) {
   // TODO: Combine all of these pipes
   gulp.task('templates', function() {
     return gulp.src(options.src + '/**/*.html')
-       .pipe(templateCache({module: 'angular-notifications.tpls'}))
+       .pipe(templateCache({module: 'angular-notification-icons.tpls'}))
        .pipe(gulp.dest(options.tmp + '/templateCache'));
   });
 
   gulp.task('build', ['scripts:jshint', 'templates'], function() {
     gulp.src([options.src + '/**/*.js', options.tmp + '/templateCache/*.js', '!' + options.src + '/**/*.spec.js'])
       .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'))
-      .pipe($.concat('angular-notifications.js'))
+      .pipe($.concat('angular-notification-icons.js'))
       .pipe(gulp.dest(options.dist))
       .pipe($.uglify())
-      .pipe($.rename('angular-notifications.min.js'))
+      .pipe($.rename('angular-notification-icons.min.js'))
       .pipe(gulp.dest(options.dist));
 
     return gulp.src(options.src + '/**/*.less')
-      .pipe($.concat('angular-notifications.less'))
+      .pipe($.concat('angular-notification-icons.less'))
       .pipe(gulp.dest(options.tmp))
       .pipe($.less()).on('error', options.errorHandler('Less'))
       .pipe($.autoprefixer()).on('error', options.errorHandler('Autoprefixer'))
-      .pipe($.rename('angular-notifications.css'))
+      .pipe($.rename('angular-notification-icons.css'))
       .pipe(gulp.dest(options.dist))
       .pipe($.csso())
-      .pipe($.rename('angular-notifications.min.css'))
+      .pipe($.rename('angular-notification-icons.min.css'))
       .pipe(gulp.dest(options.dist));
   });
 };
