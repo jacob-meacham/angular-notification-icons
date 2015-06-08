@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="angular-notifications.demo">
+<html ng-app="angular-notification-icons.demo">
   <head>
     <meta charset="utf-8">
     <title>angularNotifications</title>
@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/highlightjs/styles/github.css" />
+    <link rel="stylesheet" href="bower_components/angular-notification-icons/dist/angular-notification-icons.css" />
 
-
-    <link rel="stylesheet" href="styles/angular-notifications.css" />
     <link rel="stylesheet" href="styles/app.css">
   </head>
   <body>
@@ -21,11 +20,11 @@
 
     <div class="container" ng-controller="DemoController as vm">
       <div class="page-header">
-        <h1>angular-notifications</h1>
-        <a href="https://github.com/jacob-meacham/angular-notifications">github</a>
+        <h1>angular-notification-icons</h1>
+        <a href="https://github.com/jacob-meacham/angular-notification-icons">github</a>
       </div>
 
-      <div class="getting-started">
+      <div class="getting-started" id="basic">
         <h2>Getting Started</h2>
         <div class="row">
           <div class="col-md-2">
@@ -43,7 +42,7 @@
         <hr>
       </div>
 
-      <div class="animations">
+      <div class="animations" id="animations">
         <h2>Default Animations</h2>
         <div class="row">
           <div class="col-md-2">
@@ -103,7 +102,7 @@
         <hr>
       </div>
 
-      <div class="custom-style">
+      <div class="custom-style" id="custom-style">
         <h2>Custom style and animations</h2>
         <notification-icon animation='my-custom-animation' ng-init="vm.customPending = 0" count='vm.customPending'>
           <i class="fa fa-envelope-o fa-3x"></i>
@@ -128,7 +127,7 @@
             <div class="col-md-6">
               CSS
               <div hljs>
-.custom-style .angular-notifications-icon {
+.custom-style .angular-notification-icons-icon {
   left: -10px;
   background: yellow;
   color: black;
@@ -138,16 +137,16 @@
   font-size: 1.2em;
 }
 
-.angular-notifications-icon.my-custom-animation {
+.angular-notification-icons-icon.my-custom-animation {
   transition:0.5s linear all;
 }
 
-.angular-notifications-icon.my-custom-animation-add {
+.angular-notification-icons-icon.my-custom-animation-add {
   background: black;
   color: white;
 }
 
-.angular-notifications-icon.my-custom-animation-add-active {
+.angular-notification-icons-icon.my-custom-animation-add-active {
   background: yellow;
   color: black;
 }
@@ -158,7 +157,7 @@
         <hr>
       </div>
 
-      <div class="dom">
+      <div class="dom" id="dom-events">
         <h2>DOM Events</h2>
         <div class="row">
           <div class="col-md-2">
@@ -191,7 +190,7 @@
         <hr>
       </div>
 
-      <div class="hidden-counter">
+      <div class="hidden-counter" id="hide-count">
         <h2>Hidden Counter</h2>
         <notification-icon appear-animation='grow' update-animation='none' disappear-animation='grow' ng-init="vm.hiddenPending" hide-count="true" count='vm.hiddenPending'>
           <i class="fa fa-envelope-o fa-3x"></i>
@@ -213,7 +212,7 @@
         <hr>
       </div>
 
-      <div class="pill">
+      <div class="pill" id="pill">
         <h2>Pill Shape</h2>
         <div class="row">
           <div class="col-md-2">
@@ -235,7 +234,7 @@
         <h2>Usage</h2>
         <h3>1. Install bower component</h3>
         <div hljs>
-bower install angular-notifications --save
+bower install angular-notification-icons --save
         </div>
 
         <h3>2. Add css and script</h3>
@@ -244,7 +243,7 @@ bower install angular-notifications --save
 
         <h3>3. Add a dependency to your app</h3>
         <div hljs>
-angular.module('MyApp', ['angular-notifications']);
+angular.module('MyApp', ['angular-notification-icons']);
         </div>
 
         <h3>4. Add a notification-icon element around any other element</h3>
@@ -259,14 +258,13 @@ angular.module('MyApp', ['angular-notifications']);
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/highlightjs/highlight.pack.js"></script>
     <script src="bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
+    <script src="bower_components/angular-notification-icons/dist/angular-notification-icons.js"></script>
    
-    <script src="scripts/angular-notifications.js"></script>
     <script src="scripts/app.js"></script>
   </body>
 </html>
