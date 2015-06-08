@@ -1,5 +1,6 @@
 # angular-notifications
 Add notification popups to any element http://jemonjam.com/angular-notifications
+
 [![Build Status](https://travis-ci.org/jacob-meacham/angular-notifications.svg?branch=develop)](https://travis-ci.org/jacob-meacham/angular-notifications)
 [![Coverage Status](https://coveralls.io/repos/jacob-meacham/angular-notifications/badge.svg?branch=develop)](https://coveralls.io/r/jacob-meacham/angular-notifications?branch=develop)
 [![Code Climate](https://codeclimate.com/github/jacob-meacham/grunt-lcov-merge/badges/gpa.svg)](https://codeclimate.com/github/jacob-meacham/grunt-lcov-merge)
@@ -162,7 +163,7 @@ Adding your animation is as simple as specifying it by name on the directive
     ...
 </notification>
 ```
-[Live Demo](http://jemonjam.com/angular-notifications#custom-animation)
+[Live Demo](http://jemonjam.com/angular-notifications#custom-style)
 
 ## Advanced Usage
 
