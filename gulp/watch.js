@@ -52,6 +52,6 @@ module.exports = function(options) {
   };
 
   gulp.task('watch', ['inject'], watch(options.src));
-  gulp.task('watch:dist', ['inject:dist'], watch(options.dist, {watchSrcLess: false, watchSrcHtml: false, srcJs: 'angular-notifications.js'}));
-  gulp.task('watch:dist:min', ['inject:dist:min'], watch(options.dist, {watchSrcLess: false, watchSrcHtml: false, srcJs: 'angular-notifications.min.js'}));
+  gulp.task('watch:dist', ['inject:dist'], watch(options.dist, {watchSrcLess: false, watchSrcHtml: false, srcJs: 'angular-notification-icons.js'}));
+  gulp.task('watch:dist:min', ['inject:dist:min'], watch(options.dist, {watchSrcLess: false, watchSrcHtml: false, srcJs: 'angular-notification-icons.min.js'}));
 };

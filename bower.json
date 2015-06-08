@@ -1,9 +1,9 @@
 {
-  "name": "angular-notifications",
+  "name": "angular-notification-icons",
   "description": "angular directive to add notification popups to any element",
   "main": [
-    "dist/angular-notifications.js",
-    "dist/angular-notifications.css"
+    "dist/angular-notification-icons.js",
+    "dist/angular-notification-icons.css"
   ],
   "ignore": [
     "app",

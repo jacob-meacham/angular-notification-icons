@@ -1,8 +1,8 @@
-# angular-notifications
-Add notification popups to any element http://jemonjam.com/angular-notifications
+# angular-notification-icons
+Add notification popups to any element http://jemonjam.com/angular-notification-icons
 
-[![Build Status](https://travis-ci.org/jacob-meacham/angular-notifications.svg?branch=develop)](https://travis-ci.org/jacob-meacham/angular-notifications)
-[![Coverage Status](https://coveralls.io/repos/jacob-meacham/angular-notifications/badge.svg?branch=develop)](https://coveralls.io/r/jacob-meacham/angular-notifications?branch=develop)
+[![Build Status](https://travis-ci.org/jacob-meacham/angular-notification-icons.svg?branch=develop)](https://travis-ci.org/jacob-meacham/angular-notification-icons)
+[![Coverage Status](https://coveralls.io/repos/jacob-meacham/angular-notification-icons/badge.svg?branch=develop)](https://coveralls.io/r/jacob-meacham/angular-notification-icons?branch=develop)
 [![Code Climate](https://codeclimate.com/github/jacob-meacham/grunt-lcov-merge/badges/gpa.svg)](https://codeclimate.com/github/jacob-meacham/grunt-lcov-merge)
 
 ![demo](http://i.imgur.com/F9qc7Uw.gif)
@@ -16,21 +16,21 @@ Add notification popups to any element http://jemonjam.com/angular-notifications
 ## Getting Started
 ### 1. Install bower components
 ```shell
-bower install angular-notifications --save
+bower install angular-notification-icons --save
 ```
 
 ### 2. Add css and scripts
 ```html
-<link rel="stylesheet" href="bower_components/angular-notifications/angular-notifications.min.css">
+<link rel="stylesheet" href="bower_components/angular-notification-icons/angular-notification-icons.min.css">
 
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-notifications/angular-notifications.min.js"></script>
+<script src="bower_components/angular-notification-icons/angular-notification-icons.min.js"></script>
 ```
 
 ### 3. Add a dependency to your app
 ```
-angular.module('MyApp', ['angular-notifications']);
+angular.module('MyApp', ['angular-notification-icons']);
 ```
 
 ### 4. Add a notification-icon element around any other element
@@ -40,12 +40,12 @@ angular.module('MyApp', ['angular-notifications']);
 </notification-icon>
 ```
 
-angular-notifications is an angular directive that adds a notification popup on top of any element. The counter is tied to a scope variable and updating the count is as easy as updating the scope variable. angular-notifications comes with a number of canned animations and a default style, but it is easy to add your own styles or custom animations. angular-notifications can also optionally listen for DOM events and clear the count on a DOM event.
+angular-notification-icons is an angular directive that adds a notification popup on top of any element. The counter is tied to a scope variable and updating the count is as easy as updating the scope variable. angular-notification-icons comes with a number of canned animations and a default style, but it is easy to add your own styles or custom animations. angular-notification-icons can also optionally listen for DOM events and clear the count on a DOM event.
 
 ## Basic Usage
 
 ### Counter
-The only required attribute for angular-notifications is 'count'. This uses two-way binding to bind a scope variable to the isolate scope. This makes updating the count very simple, since your controller has full control over how it's set.
+The only required attribute for angular-notification-icons is 'count'. This uses two-way binding to bind a scope variable to the isolate scope. This makes updating the count very simple, since your controller has full control over how it's set.
 ```html
 <notification-icon count="myScopeVariable">
     ...
@@ -53,10 +53,10 @@ The only required attribute for angular-notifications is 'count'. This uses two-
 ```
 When myScopeVariable is <= 0, the notification icon will not be visible. Once myScopeVariable > 0, the notification will show up.
 
-[Live Demo](http://jemonjam.com/angular-notifications#basic)
+[Live Demo](http://jemonjam.com/angular-notification-icons#basic)
 
 ### Built-in Animations
-angular-notifications comes with a few prebuilt animations for your use.
+angular-notification-icons comes with a few prebuilt animations for your use.
 
 * bounce
 * fade
@@ -79,10 +79,10 @@ This will create a notification that bounces when appearing and when the counter
 ```
 This will create a notification that bounces when appearing, shakes when updates, and fades away when disappearing. Because all of these attributes do not use two-way binding, if you're using a variable for the animation, you'll want to use {{myVariable}} when binding.
 
-[Live Demo](http://jemonjam.com/angular-notifications#animations)
+[Live Demo](http://jemonjam.com/angular-notification-icons#animations)
 
 ### DOM Events
-angular-notifications can respond to DOM events to clear the counter. This clears the scope variable and runs an $apply. Your controller can $watch the variable if you want to react to clearing the counter.
+angular-notification-icons can respond to DOM events to clear the counter. This clears the scope variable and runs an $apply. Your controller can $watch the variable if you want to react to clearing the counter.
 
 ```html
 <notification-icon count="myCount" clear-trigger='click'>
@@ -91,17 +91,17 @@ angular-notifications can respond to DOM events to clear the counter. This clear
 ```
 Will cause the count to be cleared upon click. Any DOM event name is valid as a clear-trigger. Because clear-trigger does not use two-way binding, if you're using a variable as the trigger, you'll want to use {{myVariable}} when binding.
 
-[Live Demo](http://jemonjam.com/angular-notifications#dom-events)
+[Live Demo](http://jemonjam.com/angular-notification-icons#dom-events)
 
 ## Customizing
-angular-notifications was designed to be very simple to customize so that it fits the feel of your app.
+angular-notification-icons was designed to be very simple to customize so that it fits the feel of your app.
 
 ### Adding Custom Style
 Adding custom style is done via CSS. When the directive is created, it adds a few elements to the DOM
 ```html
 <notification-icon>
-    <div class="angular-notifications-container">
-        <div class="angular-notifications-icon overlay">
+    <div class="angular-notification-icons-container">
+        <div class="angular-notification-icons-icon overlay">
             <div class="notification-inner">
                 <!-- Your transcluded element here -->
             </div>
@@ -113,7 +113,7 @@ Adding custom style is done via CSS. When the directive is created, it adds a fe
 You can add styling at any level. For instance, if you just want to change the look of the notifaction icon, you can add to your app's css:
 
 ```css
-.angular-notifications-icon {
+.angular-notification-icons-icon {
   left: -10px;
   background: yellow;
   color: black;
@@ -124,27 +124,27 @@ You can add styling at any level. For instance, if you just want to change the l
 }
 ```
 Which will make the notification icon appear on the left with a yellow background and bold, larger text.
-[Live Demo](http://jemonjam.com/angular-notifications#custom-style)
+[Live Demo](http://jemonjam.com/angular-notification-icons#custom-style)
 
 ### Adding Custom Animations
-Adding a custom animation is as simple as adding custom styles. angular-notifications uses the standard [angular-animate](https://docs.angularjs.org/guide/animations) module for providing animations. This means that you can use either CSS keyframes or CSS transitions to build animations.
+Adding a custom animation is as simple as adding custom styles. angular-notification-icons uses the standard [angular-animate](https://docs.angularjs.org/guide/animations) module for providing animations. This means that you can use either CSS keyframes or CSS transitions to build animations.
 
 ```css
-.angular-notifications-icon.my-custom-animation {
+.angular-notification-icons-icon.my-custom-animation {
   transition:0.5s linear all;
 }
 
-.angular-notifications-icon.my-custom-animation-add {
+.angular-notification-icons-icon.my-custom-animation-add {
   background: black;
   color: white;
 }
 
-.angular-notifications-icon.my-custom-animation-add-active {
+.angular-notification-icons-icon.my-custom-animation-add-active {
   background: yellow;
   color: black;
 }
 
-.angular-notifications-icon.my-custom-keyframe-animation {
+.angular-notification-icons-icon.my-custom-keyframe-animation {
     animation: custom_keyframe_animation 0.5s;
 }
 @keyframes custom_keyframe_animation {
@@ -163,7 +163,7 @@ Adding your animation is as simple as specifying it by name on the directive
     ...
 </notification>
 ```
-[Live Demo](http://jemonjam.com/angular-notifications#custom-style)
+[Live Demo](http://jemonjam.com/angular-notification-icons#custom-style)
 
 ## Advanced Usage
 
@@ -176,7 +176,7 @@ If you don't want the count number appear, you can hide the count using the 'hid
 ```
 When myCount > 0, the notification icon will be visible, but the number will be hidden. When myCount <= 0, the icon will be hidden as normal.
 
-[Live Demo](http://jemonjam.com/angular-notifications#hide-count)
+[Live Demo](http://jemonjam.com/angular-notification-icons#hide-count)
 
 ### Pill shape
 When the number of notifications grows large enough, the icon changes to a pill shape. This is achieved by adding the css class wide-icon to the icon's div. By default, the shape transitions to a pill once the count is greater than or equal to 100, but is configurable via the attribute 'wide-threshold'.
@@ -187,6 +187,6 @@ When the number of notifications grows large enough, the icon changes to a pill 
 ```
 This will change the shape to a pill once myCount >= 10.
 
-[Live Demo](http://jemonjam.com/angular-notifications#pill)
+[Live Demo](http://jemonjam.com/angular-notification-icons#pill)
 
 ###

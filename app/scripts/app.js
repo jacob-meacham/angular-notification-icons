@@ -1,9 +1,9 @@
 'use strict';
 
-var app = angular.module('angular-notifications.demo', ['ngRoute', 'angular-notifications', 'hljs', 'angular-notifications.demo.controllers']);
+var app = angular.module('angular-notification-icons.demo', ['ngRoute', 'angular-notification-icons', 'hljs', 'angular-notification-icons.demo.controllers']);
 
 // Pre-define modules
-angular.module('angular-notifications.demo.controllers', []);
+angular.module('angular-notification-icons.demo.controllers', []);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider.
@@ -38,10 +38,10 @@ var DemoController = function($interval) {
   autoCounter(0, 1, 4, 1000);
   autoCounter(1, 98, 4, 1000);
 
-  vm.scriptSrc = '<link rel="stylesheet" href="bower_components/angular-notifications/angular-notifications.min.css">\n\n' +
+  vm.scriptSrc = '<link rel="stylesheet" href="bower_components/angular-notification-icons/angular-notification-icons.min.css">\n\n' +
 '<script src="bower_components/angular/angular.js"></script>\n' +
 '<script src="bower_components/angular-animate/angular-animate.js"></script>\n' +
-'<script src="bower_components/angular-notifications/angular-notifications.min.js"></script>';
+'<script src="bower_components/angular-notification-icons/angular-notification-icons.min.js"></script>';
 };
 
 var GifController = function($interval) {
@@ -71,6 +71,6 @@ var GifController = function($interval) {
 };
 
 
-angular.module('angular-notifications.demo.controllers')
+angular.module('angular-notification-icons.demo.controllers')
   .controller('DemoController', ['$interval', DemoController])
   .controller('GifController', ['$interval', GifController]);
