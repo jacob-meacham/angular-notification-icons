@@ -6,15 +6,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
-    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/highlightjs/styles/github.css" />
 
-    <!-- inject:css -->
-    <link rel="stylesheet" href="styles/angular-notifications.css">
-    <!-- endinject -->
 
+    <link rel="stylesheet" href="styles/angular-notifications.css" />
     <link rel="stylesheet" href="styles/app.css">
   </head>
   <body>
@@ -23,40 +20,242 @@
     <![endif]-->
 
     <div class="container" ng-controller="DemoController as vm">
-      <notification-icon appear-animation='fade' update-animation='fade' count='vm.pending[0]' clear-trigger='click'>
-        <i class="fa fa-globe fa-3x"></i>
-      </notification-icon>
+      <div class="page-header">
+        <h1>angular-notifications</h1>
+        <a href="https://github.com/jacob-meacham/angular-notifications">github</a>
+      </div>
 
-      <notification-icon animation='grow' count='vm.pending[0]' clear-trigger='click'>
-        <i class="fa fa-globe fa-3x"></i>
-      </notification-icon>
+      <div class="getting-started">
+        <h2>Getting Started</h2>
+        <div class="row">
+          <div class="col-md-2">
+            <notification-icon count='vm.autoPending[0]'>
+              <i class="fa fa-envelope-o fa-3x"></i>
+            </notification-icon>
+          </div>
+        </div>
 
-      <notification-icon animation='bounce' count='vm.pending[0]' clear-trigger='click'>
-        <i class="fa fa-globe fa-3x"></i>
-      </notification-icon>
+        <div hljs>
+<notification-icon count='vm.autoPending[0]'>
+  <i class="fa fa-envelope-o fa-3x"></i>
+</notification-icon>
+        </div>
+        <hr>
+      </div>
 
-      <notification-icon animation='shake' count='vm.pending[0]' clear-trigger='click'>
-        <i class="fa fa-globe fa-3x"></i>
-      </notification-icon>
+      <div class="animations">
+        <h2>Default Animations</h2>
+        <div class="row">
+          <div class="col-md-2">
+            <notification-icon animation='grow' ng-init="vm.animationsPending = 0" count='vm.animationsPending'>
+              <i class="fa fa-envelope-o fa-3x"></i>
+            </notification-icon>
+            Grow
+          </div>
 
-      <notification-icon animation='none' count='vm.pending[0]'>
-        <i class="fa fa-globe fa-3x"></i>
-      </notification-icon>
+          <div class="col-md-2">
+            <notification-icon animation='bounce' count='vm.animationsPending'>
+              <i class="fa fa-envelope-o fa-3x"></i>
+            </notification-icon>
+            Bounce
+          </div>
 
-      <notification-icon animation='none' appear-animation='grow' disappear-animation='grow' count='vm.pending[0]' hide-count="true">
-        <i class="fa fa-globe fa-3x"></i>
-      </notification-icon>
+          <div class="col-md-2">
+            <notification-icon animation='shake' count='vm.animationsPending'>
+              <i class="fa fa-envelope-o fa-3x"></i>
+            </notification-icon>
+            Shake
+          </div>
 
-      <notification-icon ng-init='vm.mycount' count='vm.mycount'>
-        <button class="btn btn-default" ng-click="vm.mycount = vm.mycount + 1">Messages</button>
-      </notification-icon>
+          <div class="col-md-2">
+            <notification-icon animation='none' disappear-animation='bounce' count='vm.animationsPending'>
+              <i class="fa fa-envelope-o fa-3x"></i>
+            </notification-icon>
+            Bounce on disappear
+          </div>
+        </div>
 
-      <button class="btn btn-default" id="first" ng-click="vm.pending[0] = vm.pending[0] + 1">Add Notification</button>
+        <div class="buttons">
+          <button class="btn btn-default" ng-click="vm.animationsPending = vm.animationsPending + 1">Add Notification</button>
 
-      <button class="btn btn-default" id="first" ng-click="vm.pending[0] = 0">Clear Notifications</button>
+          <button class="btn btn-default" ng-click="vm.animationsPending = 0">Clear Notifications</button>
+        </div>
+
+        <div class="code">
+          <div hljs>
+<notification-icon animation='grow' count='vm.pending'>
+  <i class="fa fa-envelope-o fa-3x"></i>
+</notification-icon>
+
+<notification-icon animation='bounce' count='vm.pending'>
+  <i class="fa fa-envelope-o fa-3x"></i>
+</notification-icon>
+
+<notification-icon animation='shake' count='vm.pending'>
+  <i class="fa fa-envelope-o fa-3x"></i>
+</notification-icon>
+
+<notification-icon animation='none' disappear-animation='bounce' count='vm.pending'>
+  <i class="fa fa-envelope-o fa-3x"></i>
+</notification-icon>
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <div class="custom-style">
+        <h2>Custom style and animations</h2>
+        <notification-icon animation='my-custom-animation' ng-init="vm.customPending = 0" count='vm.customPending'>
+          <i class="fa fa-envelope-o fa-3x"></i>
+        </notification-icon>
+
+        <div class="buttons">
+          <button class="btn btn-default" ng-click="vm.customPending = vm.customPending + 1">Add Notification</button>
+
+          <button class="btn btn-default" ng-click="vm.customPending = 0">Clear Notifications</button>
+        </div>
+
+        <div class="code">
+          <div class="row">
+            <div class="col-md-6">
+              JS
+              <div hljs>
+<notification-icon animation='my-custom-animation' ng-init="vm.customPending = 0" count='vm.customPending'>
+  <i class="fa fa-envelope-o fa-3x"></i>
+</notification-icon>
+              </div>
+            </div>
+            <div class="col-md-6">
+              CSS
+              <div hljs>
+.custom-style .angular-notifications-icon {
+  left: -10px;
+  background: yellow;
+  color: black;
+  width: 30px;
+  height: 30px;
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+.angular-notifications-icon.my-custom-animation {
+  transition:0.5s linear all;
+}
+
+.angular-notifications-icon.my-custom-animation-add {
+  background: black;
+  color: white;
+}
+
+.angular-notifications-icon.my-custom-animation-add-active {
+  background: yellow;
+  color: black;
+}
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <div class="dom">
+        <h2>DOM Events</h2>
+        <div class="row">
+          <div class="col-md-2">
+            <notification-icon ng-init='vm.mycount' count='vm.domCount' clear-trigger='click'>
+              <button class="btn btn-default">Click to Clear</button>
+            </notification-icon>
+          </div>
+          <div class="col-md-2">
+            <notification-icon count='vm.domCount' clear-trigger='mouseover'>
+              <button class="btn btn-default">Hover to Clear</button>
+            </notification-icon>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn btn-default" ng-click="vm.domCount = vm.domCount + 1">Add Notification</button>
+        </div>
+
+        <div class="code">
+          <div hljs>
+<notification-icon ng-init='vm.mycount' count='vm.domCount' clear-trigger='click'>
+  <button class="btn btn-default">Click to Clear</button>
+</notification-icon>
+
+<notification-icon count='vm.domCount' clear-trigger='mouseover'>
+  <button class="btn btn-default">Hover to Clear</button>
+</notification-icon>
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <div class="hidden-counter">
+        <h2>Hidden Counter</h2>
+        <notification-icon appear-animation='grow' update-animation='none' disappear-animation='grow' ng-init="vm.hiddenPending" hide-count="true" count='vm.hiddenPending'>
+          <i class="fa fa-envelope-o fa-3x"></i>
+        </notification-icon>
+
+        <div class="buttons">
+          <button class="btn btn-default" ng-click="vm.hiddenPending = vm.hiddenPending + 1">Add Notification</button>
+
+          <button class="btn btn-default" ng-click="vm.hiddenPending = 0">Clear Notifications</button>
+        </div>
+
+        <div class="code">
+          <div hljs>
+<notification-icon appear-animation='grow' update-animation='none' disappear-animation='grow' ng-init="vm.hiddenPending" hide-count="true" count='vm.hiddenPending'>
+  <i class="fa fa-envelope-o fa-3x"></i>
+</notification-icon>
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <div class="pill">
+        <h2>Pill Shape</h2>
+        <div class="row">
+          <div class="col-md-2">
+            <notification-icon count='vm.autoPending[1]'>
+              <i class="fa fa-envelope-o fa-3x"></i>
+            </notification-icon>
+          </div>
+        </div>
+
+        <div hljs>
+<notification-icon count='vm.autoPending[1]'>
+  <i class="fa fa-envelope-o fa-3x"></i>
+</notification-icon>
+        </div>
+        <hr>
+      </div>
+
+      <div class="setup">
+        <h2>Usage</h2>
+        <h3>1. Install bower component</h3>
+        <div hljs>
+bower install angular-notifications --save
+        </div>
+
+        <h3>2. Add css and script</h3>
+        <div hljs source="'{{vm.scriptSrc}}'">
+        </div>
+
+        <h3>3. Add a dependency to your app</h3>
+        <div hljs>
+angular.module('MyApp', ['angular-notifications']);
+        </div>
+
+        <h3>4. Add a notification-icon element around any other element</h3>
+        <div hljs>
+<notification-icon count='scopeVariable'>
+  ...
+</notification-icon>
+        </div>
+      </div>
     </div>
-    
-     <!-- bower:js -->
+
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -64,12 +263,10 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <!-- endbower -->
-
-    <!-- inject:js -->
+    <script src="bower_components/highlightjs/highlight.pack.js"></script>
+    <script src="bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
+   
     <script src="scripts/angular-notifications.js"></script>
     <script src="scripts/app.js"></script>
-    <script src="scripts/main/demo.controller.js"></script>
-    <!-- endinject -->
   </body>
 </html>
