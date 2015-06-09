@@ -1,3 +1,5 @@
+@import "./prefixer.less";
+
 .angular-notifications-container {
     position: relative;
     display: table-cell;
@@ -26,26 +28,31 @@
 }
 
 .angular-notifications-icon.wide-icon {
-    border-radius: ~"30% / 50%";
+    .border-radius(~"30% / 50%");
 }
 
 .angular-notifications-icon.fade {
-  animation: notification_fade_in 0.5s;
+  .animation(notification-fade-in 0.5s);
 }
 
 .angular-notifications-icon.bounce {
-  animation: notification_bounce 0.5s;
+  .animation(notification-bounce 0.5s);
 }
 
 .angular-notifications-icon.grow {
-  animation: notification_grow 0.5s;
+  .animation(notification-grow 0.5s);
 }
 
 .angular-notifications-icon.shake {
-  animation: notification_shake 0.5s;
+  .animation(notification-shake 0.5s);
 }
 
-@keyframes notification_fade_in {
+@-webkit-keyframes notification-fade-in {.fade-frames;}
+@-moz-keyframes notification-fade-in {.fade-frames;}
+@-ms-keyframes notification-fade-in {.fade-frames;}
+@-o-keyframes notification-fade-in {.fade-frames;}
+@keyframes notification-fade-in {.fade-frames;}
+.fade-frames () {
     from {
         opacity: 0;
     }
@@ -55,31 +62,41 @@
     }
 }
 
-@keyframes notification_bounce {
+@-webkit-keyframes notification-bounce {.bounce-frames;}
+@-moz-keyframes notification-bounce {.bounce-frames;}
+@-ms-keyframes notification-bounce {.bounce-frames;}
+@-o-keyframes notification-bounce {.bounce-frames;}
+@keyframes notification-bounce {.bounce-frames;}
+.bounce-frames () {
     30% {
-        transform: perspective(1px) translate(0, -8px);
+        .translate(0, -8px);
     }
 
     60% {
-        transform: perspective(1px) translate(0, 0);
+        .translate(0, 0);
     }
 
     80% {
-        transform: perspective(1px) translate(0, -5px);
+        .translate(0, -5px);
     }
 
     to {
-        transform: perspective(1px) translate(0, 0);
+        .translate(0, 0);
     }
 }
 
-@keyframes notification_grow {
+@-webkit-keyframes notification-grow {.grow-frames;}
+@-moz-keyframes notification-grow {.grow-frames;}
+@-ms-keyframes notification-grow {.grow-frames;}
+@-o-keyframes notification-grow {.grow-frames;}
+@keyframes notification-grow {.grow-frames;}
+.grow-frames () {
     30% {
-        transform: scale(1.2);
+        .scale(1.2);
     }
 
     60% {
-        transform: scale(0.8);
+        .scale(0.8);
     }
 
     to {
@@ -87,24 +104,29 @@
     }
 }
 
-@keyframes notification_shake {
+@-webkit-keyframes notification-shake {.shake-frames;}
+@-moz-keyframes notification-shake {.shake-frames;}
+@-ms-keyframes notification-shake {.shake-frames;}
+@-o-keyframes notification-shake {.shake-frames;}
+@keyframes notification-shake {.shake-frames;}
+.shake-frames () {
     20% {
-        transform: rotate(20deg);
+        .rotate(20deg);
     }
 
     40% {
-        transform: rotate(-20deg);
+        .rotate(-20deg);
     }
 
     60% {
-        transform: rotate(10deg);
+        .rotate(10deg);
     }
 
     80% {
-        transform: rotate(-10deg);
+        .rotate(-10deg);
     }
 
     to {
-        transform: rotate(0);
+        .rotate(0);
     }
 }

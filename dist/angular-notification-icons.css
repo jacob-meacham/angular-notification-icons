@@ -27,24 +27,25 @@
 }
 .angular-notifications-icon.wide-icon {
   border-radius: 30% / 50%;
+  background-clip: padding-box;
 }
 .angular-notifications-icon.fade {
-  -webkit-animation: notification_fade_in 0.5s;
-          animation: notification_fade_in 0.5s;
+  -webkit-animation: notification-fade-in 0.5s;
+  animation: notification-fade-in 0.5s;
 }
 .angular-notifications-icon.bounce {
-  -webkit-animation: notification_bounce 0.5s;
-          animation: notification_bounce 0.5s;
+  -webkit-animation: notification-bounce 0.5s;
+  animation: notification-bounce 0.5s;
 }
 .angular-notifications-icon.grow {
-  -webkit-animation: notification_grow 0.5s;
-          animation: notification_grow 0.5s;
+  -webkit-animation: notification-grow 0.5s;
+  animation: notification-grow 0.5s;
 }
 .angular-notifications-icon.shake {
-  -webkit-animation: notification_shake 0.5s;
-          animation: notification_shake 0.5s;
+  -webkit-animation: notification-shake 0.5s;
+  animation: notification-shake 0.5s;
 }
-@-webkit-keyframes notification_fade_in {
+@-webkit-keyframes notification-fade-in {
   from {
     opacity: 0;
   }
@@ -52,7 +53,7 @@
     opacity: 1;
   }
 }
-@keyframes notification_fade_in {
+@keyframes notification-fade-in {
   from {
     opacity: 0;
   }
@@ -60,111 +61,133 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes notification_bounce {
+@-webkit-keyframes notification-bounce {
   30% {
     -webkit-transform: perspective(1px) translate(0, -8px);
-            transform: perspective(1px) translate(0, -8px);
+    -ms-transform: perspective(1px) translate(0, -8px);
+    transform: perspective(1px) translate(0, -8px);
   }
   60% {
     -webkit-transform: perspective(1px) translate(0, 0);
-            transform: perspective(1px) translate(0, 0);
+    -ms-transform: perspective(1px) translate(0, 0);
+    transform: perspective(1px) translate(0, 0);
   }
   80% {
     -webkit-transform: perspective(1px) translate(0, -5px);
-            transform: perspective(1px) translate(0, -5px);
+    -ms-transform: perspective(1px) translate(0, -5px);
+    transform: perspective(1px) translate(0, -5px);
   }
   to {
     -webkit-transform: perspective(1px) translate(0, 0);
-            transform: perspective(1px) translate(0, 0);
+    -ms-transform: perspective(1px) translate(0, 0);
+    transform: perspective(1px) translate(0, 0);
   }
 }
-@keyframes notification_bounce {
+@keyframes notification-bounce {
   30% {
     -webkit-transform: perspective(1px) translate(0, -8px);
-            transform: perspective(1px) translate(0, -8px);
+    -ms-transform: perspective(1px) translate(0, -8px);
+    transform: perspective(1px) translate(0, -8px);
   }
   60% {
     -webkit-transform: perspective(1px) translate(0, 0);
-            transform: perspective(1px) translate(0, 0);
+    -ms-transform: perspective(1px) translate(0, 0);
+    transform: perspective(1px) translate(0, 0);
   }
   80% {
     -webkit-transform: perspective(1px) translate(0, -5px);
-            transform: perspective(1px) translate(0, -5px);
+    -ms-transform: perspective(1px) translate(0, -5px);
+    transform: perspective(1px) translate(0, -5px);
   }
   to {
     -webkit-transform: perspective(1px) translate(0, 0);
-            transform: perspective(1px) translate(0, 0);
+    -ms-transform: perspective(1px) translate(0, 0);
+    transform: perspective(1px) translate(0, 0);
   }
 }
-@-webkit-keyframes notification_grow {
+@-webkit-keyframes notification-grow {
   30% {
     -webkit-transform: scale(1.2);
-            transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
   }
   60% {
     -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
   }
   to {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
 }
-@keyframes notification_grow {
+@keyframes notification-grow {
   30% {
     -webkit-transform: scale(1.2);
-            transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
   }
   60% {
     -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
   }
   to {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
 }
-@-webkit-keyframes notification_shake {
+@-webkit-keyframes notification-shake {
   20% {
     -webkit-transform: rotate(20deg);
-            transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    transform: rotate(20deg);
   }
   40% {
     -webkit-transform: rotate(-20deg);
-            transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    transform: rotate(-20deg);
   }
   60% {
     -webkit-transform: rotate(10deg);
-            transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    transform: rotate(10deg);
   }
   80% {
     -webkit-transform: rotate(-10deg);
-            transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    transform: rotate(-10deg);
   }
   to {
     -webkit-transform: rotate(0);
-            transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
   }
 }
-@keyframes notification_shake {
+@keyframes notification-shake {
   20% {
     -webkit-transform: rotate(20deg);
-            transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    transform: rotate(20deg);
   }
   40% {
     -webkit-transform: rotate(-20deg);
-            transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    transform: rotate(-20deg);
   }
   60% {
     -webkit-transform: rotate(10deg);
-            transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    transform: rotate(10deg);
   }
   80% {
     -webkit-transform: rotate(-10deg);
-            transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    transform: rotate(-10deg);
   }
   to {
     -webkit-transform: rotate(0);
-            transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
   }
 }
