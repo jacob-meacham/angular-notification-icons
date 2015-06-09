@@ -29,9 +29,7 @@ module.exports = function(options) {
       .pipe($.rename('angular-notification-icons.min.js'))
       .pipe(gulp.dest(options.dist));
 
-    return gulp.src(options.src + '/**/*.less')
-      .pipe($.concat('angular-notification-icons.less'))
-      .pipe(gulp.dest(options.tmp))
+    return gulp.src(options.src + '/css/angular-notification-icons.less')
       .pipe($.less()).on('error', options.errorHandler('Less'))
       .pipe($.autoprefixer()).on('error', options.errorHandler('Autoprefixer'))
       .pipe($.rename('angular-notification-icons.css'))
