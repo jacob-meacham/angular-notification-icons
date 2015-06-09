@@ -1,0 +1,44 @@
+//  Credit to LESS Elements for the motivation and
+//  to CSS3Please.com for implementation.
+//
+//  Copyright (c) 2012 Joel Sutherland
+//  MIT Licensed:
+//  http://www.opensource.org/licenses/mit-license.php
+//
+//---------------------------------------------------
+// This is a stripped down version of LESS-Prefixer (http://lessprefixer.com/)
+
+.animation(@args) {
+    -webkit-animation: @args;
+    -moz-animation: @args;
+    -ms-animation: @args;
+    -o-animation: @args;
+    animation: @args;
+}
+
+.border-radius(@args) {
+    -webkit-border-radius: @args;
+    border-radius: @args;
+
+    background-clip: padding-box;
+}
+
+.transform(@args) {
+    -webkit-transform: @args;
+    -moz-transform: @args;
+    -ms-transform: @args;
+    -o-transform: @args;
+    transform: @args;
+}
+
+.rotate(@deg) {
+    .transform(rotate(@deg));
+}
+
+.scale(@factor) {
+    .transform(scale(@factor));
+}
+
+.translate(@x, @y) {
+    .transform(perspective(1px) translate(@x, @y));
+}
