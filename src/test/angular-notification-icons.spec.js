@@ -64,19 +64,51 @@ describe('angular-notifications-icon', function() {
 
       var ctrl = $controller('NotificationDirectiveController', scope, {clearTrigger: 'mouseover'});
       ctrl.init(angularElement);
-      onSpy.getCall(0).args[0].should.eql('mouseover');
+      onSpy.should.have.been.calledWithMatch('mouseover');
     });
 
     it('should appear if not visible and count goes above 0', function() {
+      var deferred = $q.defer();
+      var removeClassSpy = spyOn(element, 'removeClass');
+      var addClassStub = sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
+      var ctrl = $controller('NotificationDirectiveController', scope);
+      ctrl.init(angularElement);
+      scope.$scope.self = ctrl;
+
+      ctrl.count = 1;
+      scope.$scope.$digest();
+
+      // Element should now be visible
+      ctrl.visible.should.eql(true);
+      addClassStub.should.have.been.calledWith(element, 'grow'); // Default animation was played
+
+      // Class was removed after animation finished
+      deferred.resolve();
+      scope.$scope.$apply();
+      removeClassSpy.secondCall.args.should.eql(['grow']);
     });
 
     it('should play appear animation if set', function() {
+      var deferred = $q.defer();
+      var removeClassSpy = spyOn(element, 'removeClass');
+      var addClassStub = sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
-    });
+      var ctrl = $controller('NotificationDirectiveController', scope, {appearAnimation: 'some-animation'});
+      ctrl.init(angularElement);
+      scope.$scope.self = ctrl;
 
-    it('should use a default appear animation', function() {
+      ctrl.count = 1;
+      scope.$scope.$digest();
 
+      // Element should now be visible
+      ctrl.visible.should.eql(true);
+      addClassStub.should.have.been.calledWith(element, 'some-animation');
+
+      // Class was removed after animation finished
+      deferred.resolve();
+      scope.$scope.$apply();
+      removeClassSpy.secondCall.args.should.eql(['some-animation']);
     });
 
     it('should update if visible and the count changes', function() {
