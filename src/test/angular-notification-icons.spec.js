@@ -1,7 +1,7 @@
 'use strict';
 
 describe('angular-notifications-icon', function() {
-  beforeEach(module('angular-notification-icons'));
+  beforeEach(module('angular-notification-icons', 'angular-notifications.tpls'));
 
   describe('NotificationDirectiveController', function() {
     var $controller;
@@ -56,15 +56,27 @@ describe('angular-notifications-icon', function() {
 
       var ctrl = $controller('NotificationDirectiveController', scope);
       ctrl.init(angularElement);
-      findSpy.getCall(0).args[0].should.equal('.angular-notifications-icon');
+      findSpy.firstCall.args.should.eql(['.angular-notifications-icon']);
     });
 
     it('should set a clear trigger if specified', function() {
-      var onSpy = spyOn(angularElement, 'on');
+      var clearTriggerFn;
+      angularElement.on = {};
+      sandbox.stub(angularElement, 'on', function(trigger, callback) {
+        trigger.should.eql('mouseover');
+        clearTriggerFn = callback;
+      });
+
+      var deferred = $q.defer();
+      spyOn(element, 'removeClass');
+      sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope, {clearTrigger: 'mouseover'});
       ctrl.init(angularElement);
-      onSpy.should.have.been.calledWithMatch('mouseover');
+
+      ctrl.count = 10;
+      clearTriggerFn();
+      ctrl.count.should.eql(0);
     });
 
     it('should appear if not visible and count goes above 0', function() {
@@ -278,6 +290,26 @@ describe('angular-notifications-icon', function() {
       scope.$scope.$digest();
 
       removeClassSpy.firstCall.args.should.eql(['wide-icon']);
+    });
+  });
+
+  describe('notificationIcon directive', function() {
+    var $compile;
+    var $scope;
+
+    beforeEach(inject(function(_$compile_, $rootScope) {
+      $compile = _$compile_;
+      $scope = $rootScope.$new();
+    }));
+
+    it('should compile with a count', function() {
+      var element = $compile('<notification-icon count="10"><div id="inner-test-div"></div></notification-icon>')($scope);
+      $scope.$digest();
+
+      var ctrl = element.isolateScope().notification;
+      ctrl.count.should.eql(10);
+
+      element.find('.inner-test-dev').should.exist;
     });
   });
 });
