@@ -33,6 +33,6 @@ gulp.task('default', ['clean'], function() {
 });
 
 gulp.task('ci', ['build', 'test'], function() {
-  return gulp.src('build/coverage/**/lcov.info')
+  return gulp.src('build/**/lcov.info')
     .pipe(coveralls());
 });
