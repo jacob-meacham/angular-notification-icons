@@ -42,6 +42,11 @@ angular.module('MyApp', ['angular-notification-icons']);
 
 angular-notification-icons is an angular directive that adds a notification popup on top of any element. The counter is tied to a scope variable and updating the count is as easy as updating the scope variable. angular-notification-icons comes with a number of canned animations and a default style, but it is easy to add your own styles or custom animations. angular-notification-icons can also optionally listen for DOM events and clear the count on a DOM event.
 
+angular-notification-icons has been tested with angular 1.3.15+, although it will probably work with most recent versions of angular and angular-animate.
+
+## Demo App
+To run the demo app, run `npm install`, and then `gulp serve`.
+
 ## Basic Usage
 
 ### Counter
