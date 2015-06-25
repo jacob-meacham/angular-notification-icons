@@ -68,7 +68,7 @@ angular-notification-icons comes with a few prebuilt animations for your use.
 * grow
 * shake
 
-There are three separate animation events: appear, update, and disappear. Appear is triggered when the counter goes from 0 to non-zero. Update is trigger when the counter increments or decrements but does not go to or from zero. Disapper is triggered when the counter goes from non-zero to zero. The default animation for appear and update is grow, and none for disappear. The most common case is setting the same animation for appear and update, and you can use the 'animation' attribute for this case.
+There are three separate animation events: appear, update, and disappear. Appear is triggered when the counter goes from 0 to non-zero. Update is trigger when the counter increments or decrements but does not go to or from zero. Disappear is triggered when the counter goes from non-zero to zero. The default animation for appear and update is grow, and there is no default set for disappear. A common case is to use the same animation for appear and update, and you can use the 'animation' attribute for this case.
 
 ```html
 <notification-icon count="myCount" animation='bounce'>
