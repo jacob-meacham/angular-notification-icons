@@ -26,7 +26,6 @@
     };
 
     var handleAnimation = function(animationClass) {
-      // TODO: Don't interrupt the animation?
       if (animationClass) {
         if (animationPromise) {
           $animate.cancel(animationPromise);
