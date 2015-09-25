@@ -24,13 +24,13 @@ bower install angular-notification-icons --save
 <link rel="stylesheet" href="bower_components/angular-notification-icons/angular-notification-icons.min.css">
 
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script> <!-- Not required, but recommended -->
 <script src="bower_components/angular-notification-icons/angular-notification-icons.min.js"></script>
 ```
 
 ### 3. Add a dependency to your app
 ```
-angular.module('MyApp', ['angular-notification-icons']);
+angular.module('MyApp', ['angular-notification-icons', 'ngAnimate']); // ngAnimate is only required if you want animations
 ```
 
 ### 4. Add a notification-icon element around any other element
@@ -61,7 +61,7 @@ When myScopeVariable is <= 0, the notification icon will not be visible. Once my
 [Live Demo](http://jemonjam.com/angular-notification-icons#basic)
 
 ### Built-in Animations
-angular-notification-icons comes with a few prebuilt animations for your use.
+angular-notification-icons comes with a few prebuilt animations for your use. Note that these are only available if you are using the ngAnimate module
 
 * bounce
 * fade
