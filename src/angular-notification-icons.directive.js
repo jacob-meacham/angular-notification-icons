@@ -7,6 +7,7 @@
     var self = this;
     self.visible = false;
     self.wideThreshold = self.wideThreshold || 100;
+    self.alwaysShow = self.alwaysShow || false;
 
     var animationPromise;
     var animationSet = {
@@ -26,7 +27,6 @@
     };
 
     var handleAnimation = function(animationClass) {
-      // TODO: Don't interrupt the animation?
       if (animationClass) {
         if (animationPromise) {
           $animate.cancel(animationPromise);
@@ -64,16 +64,17 @@
     };
 
     $scope.$watch(function() { return self.count; }, function() {
-      if (self.visible === false && self.count > 0) {
+      if (self.visible === false && (self.alwaysShow || self.count > 0)) {
         appear();
-      } else if (self.visible === true && self.count <= 0) {
+      } else if (!self.alwaysShow && self.visible === true && self.count <= 0) {
+        // Only clear if we're not always showing
         clear();
       } else {
         update();
       }
 
       // Use more of a pill shape if the count is high enough.
-      if (self.count >= self.wideThreshold) {
+      if (Math.abs(self.count) >= self.wideThreshold) {
         self.$element.addClass('wide-icon');
       } else {
         self.$element.removeClass('wide-icon');
@@ -87,6 +88,7 @@
       scope: {
         count: '=',
         hideCount: '@',
+        alwaysShow: '@',
         animation: '@',
         appearAnimation: '@',
         disappearAnimation: '@',
