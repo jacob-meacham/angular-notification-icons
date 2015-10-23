@@ -13,7 +13,7 @@ angular.module("angular-notification-icons.tpls").run(["$templateCache", functio
     var self = this;
     self.visible = false;
     self.wideThreshold = self.wideThreshold || 100;
-    self.alwaysShow = self.always || false;
+    self.alwaysShow = self.alwaysShow || false;
 
     var animationPromise;
     var animationSet = {
