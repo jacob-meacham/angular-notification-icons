@@ -24,13 +24,13 @@ bower install angular-notification-icons --save
 <link rel="stylesheet" href="bower_components/angular-notification-icons/angular-notification-icons.min.css">
 
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script> <!-- Not required, but recommended -->
 <script src="bower_components/angular-notification-icons/angular-notification-icons.min.js"></script>
 ```
 
 ### 3. Add a dependency to your app
 ```
-angular.module('MyApp', ['angular-notification-icons']);
+angular.module('MyApp', ['angular-notification-icons', 'ngAnimate']); // ngAnimate is only required if you want animations
 ```
 
 ### 4. Add a notification-icon element around any other element
@@ -42,7 +42,7 @@ angular.module('MyApp', ['angular-notification-icons']);
 
 angular-notification-icons is an angular directive that adds a notification popup on top of any element. The counter is tied to a scope variable and updating the count is as easy as updating the scope variable. angular-notification-icons comes with a number of canned animations and a default style, but it is easy to add your own styles or custom animations. angular-notification-icons can also optionally listen for DOM events and clear the count on a DOM event.
 
-angular-notification-icons has been tested with angular 1.3.15+, although it will probably work with most recent versions of angular and angular-animate.
+angular-notification-icons has been tested with angular 1.3.x, and 1.4.x. It will probably work with most recent versions of angular and angular-animate, but make sure that angular and angular-animate versions match.
 
 ## Demo App
 To run the demo app, run `npm install`, and then `gulp serve`.
@@ -61,14 +61,14 @@ When myScopeVariable is <= 0, the notification icon will not be visible. Once my
 [Live Demo](http://jemonjam.com/angular-notification-icons#basic)
 
 ### Built-in Animations
-angular-notification-icons comes with a few prebuilt animations for your use.
+angular-notification-icons comes with a few prebuilt animations for your use. Note that these are only available if you are using the ngAnimate module
 
 * bounce
 * fade
 * grow
 * shake
 
-There are three separate animation events: appear, update, and disappear. Appear is triggered when the counter goes from 0 to non-zero. Update is trigger when the counter increments or decrements but does not go to or from zero. Disapper is triggered when the counter goes from non-zero to zero. The default animation for appear and update is grow, and none for disappear. The most common case is setting the same animation for appear and update, and you can use the 'animation' attribute for this case.
+There are three separate animation events: appear, update, and disappear. Appear is triggered when the counter goes from 0 to non-zero. Update is trigger when the counter increments or decrements but does not go to or from zero. Disappear is triggered when the counter goes from non-zero to zero. The default animation for appear and update is grow, and there is no default set for disappear. A common case is to use the same animation for appear and update, and you can use the 'animation' attribute for this case.
 
 ```html
 <notification-icon count="myCount" animation='bounce'>
@@ -166,7 +166,7 @@ Adding your animation is as simple as specifying it by name on the directive
 ```js
 <notification-icon count='myCount' animation='my-custom-animation' disappear-animation='my-custom-keyframe-animation'>
     ...
-</notification>
+</notification-icon>
 ```
 [Live Demo](http://jemonjam.com/angular-notification-icons#custom-style)
 
@@ -177,11 +177,21 @@ If you don't want the count number appear, you can hide the count using the 'hid
 ```html
 <notification-icon count='myCount' hide-count='true'>
     ...
-</notification>
+</notification-icon>
 ```
 When myCount > 0, the notification icon will be visible, but the number will be hidden. When myCount <= 0, the icon will be hidden as normal.
 
 [Live Demo](http://jemonjam.com/angular-notification-icons#hide-count)
+
+### alwaysShow
+If you *always* want the count number to appear, even when 0 or negative, you can add the 'always-show' attribute
+```html
+<notification-icon count='myCount' always-show='true'>
+  ...
+</notification-icon>
+
+[Live Demo](http://jemonjam.com/angular-notification-icons#always-show)
+
 
 ### Pill shape
 When the number of notifications grows large enough, the icon changes to a pill shape. This is achieved by adding the css class wide-icon to the icon's div. By default, the shape transitions to a pill once the count is greater than or equal to 100, but is configurable via the attribute 'wide-threshold'.
