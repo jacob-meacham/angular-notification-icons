@@ -216,6 +216,28 @@
         <hr>
       </div>
 
+      <div class="always-show" id="always-show">
+        <h2>Always Show</h2>
+        <notification-icon animation='shake' ng-init="vm.alwaysShowCount = 0" count='vm.alwaysShowCount' always-show='true'>
+          <i class="fa fa-envelope-o fa-3x"></i>
+        </notification-icon>
+
+        <div class="buttons">
+          <button class="btn btn-default" ng-click="vm.alwaysShowCount = vm.alwaysShowCount + 1">Add Notification</button>
+
+          <button class="btn btn-default" ng-click="vm.alwaysShowCount = (vm.alwaysShowCount - 1)">Remove Notification</button>
+        </div>
+
+        <div class="code">
+          <div hljs>
+<notification-icon animation='shake' ng-init="vm.alwaysShowCount = 0" count='vm.alwaysShowCount' always-show='true'>
+  <i class="fa fa-envelope-o fa-3x"></i>
+</notification-icon>
+          </div>
+        </div>
+        <hr>
+      </div>
+
       <div class="pill" id="pill">
         <h2>Pill Shape</h2>
         <div class="row">

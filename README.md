@@ -166,7 +166,7 @@ Adding your animation is as simple as specifying it by name on the directive
 ```js
 <notification-icon count='myCount' animation='my-custom-animation' disappear-animation='my-custom-keyframe-animation'>
     ...
-</notification>
+</notification-icon>
 ```
 [Live Demo](http://jemonjam.com/angular-notification-icons#custom-style)
 
@@ -177,11 +177,21 @@ If you don't want the count number appear, you can hide the count using the 'hid
 ```html
 <notification-icon count='myCount' hide-count='true'>
     ...
-</notification>
+</notification-icon>
 ```
 When myCount > 0, the notification icon will be visible, but the number will be hidden. When myCount <= 0, the icon will be hidden as normal.
 
 [Live Demo](http://jemonjam.com/angular-notification-icons#hide-count)
+
+### alwaysShow
+If you *always* want the count number to appear, even when 0 or negative, you can add the 'always-show' attribute
+```html
+<notification-icon count='myCount' always-show='true'>
+  ...
+</notification-icon>
+
+[Live Demo](http://jemonjam.com/angular-notification-icons#always-show)
+
 
 ### Pill shape
 When the number of notifications grows large enough, the icon changes to a pill shape. This is achieved by adding the css class wide-icon to the icon's div. By default, the shape transitions to a pill once the count is greater than or equal to 100, but is configurable via the attribute 'wide-threshold'.
