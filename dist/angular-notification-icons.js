@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('angular-notification-icons', ['angular-notification-icons.tpls', 'ngAnimate']);
+angular.module('angular-notification-icons', ['angular-notification-icons.tpls']);
 angular.module('angular-notification-icons.tpls', []);
 
-angular.module("angular-notification-icons.tpls").run(["$templateCache", function($templateCache) {$templateCache.put("template/notification-icon.html","<div class=\"angular-notifications-container\">\r\n    <div class=\"angular-notifications-icon overlay\" ng-show=\"notification.visible\"><div ng-hide=\"notification.hideCount\">{{notification.count}}</div></div>\r\n    <div class=\"notification-inner\">\r\n        <ng-transclude></ng-transclude>\r\n    </div>\r\n</div>");}]);
+angular.module("angular-notification-icons.tpls").run(["$templateCache", function($templateCache) {$templateCache.put("template/notification-icon.html","<div class=\"angular-notifications-container\">\n    <div class=\"angular-notifications-icon overlay\" ng-show=\"notification.visible\"><div ng-hide=\"notification.hideCount\">{{notification.count}}</div></div>\n    <div class=\"notification-inner\">\n        <ng-transclude></ng-transclude>\n    </div>\n</div>");}]);
 /* global angular */
 
 (function() {
@@ -13,6 +13,7 @@ angular.module("angular-notification-icons.tpls").run(["$templateCache", functio
     var self = this;
     self.visible = false;
     self.wideThreshold = self.wideThreshold || 100;
+    self.alwaysShow = self.always || false;
 
     var animationPromise;
     var animationSet = {
@@ -32,7 +33,6 @@ angular.module("angular-notification-icons.tpls").run(["$templateCache", functio
     };
 
     var handleAnimation = function(animationClass) {
-      // TODO: Don't interrupt the animation?
       if (animationClass) {
         if (animationPromise) {
           $animate.cancel(animationPromise);
@@ -70,16 +70,17 @@ angular.module("angular-notification-icons.tpls").run(["$templateCache", functio
     };
 
     $scope.$watch(function() { return self.count; }, function() {
-      if (self.visible === false && self.count > 0) {
+      if (self.visible === false && (self.alwaysShow || self.count > 0)) {
         appear();
-      } else if (self.visible === true && self.count <= 0) {
+      } else if (!self.alwaysShow && self.visible === true && self.count <= 0) {
+        // Only clear if we're not always showing
         clear();
       } else {
         update();
       }
 
       // Use more of a pill shape if the count is high enough.
-      if (self.count >= self.wideThreshold) {
+      if (Math.abs(self.count) >= self.wideThreshold) {
         self.$element.addClass('wide-icon');
       } else {
         self.$element.removeClass('wide-icon');
@@ -93,6 +94,7 @@ angular.module("angular-notification-icons.tpls").run(["$templateCache", functio
       scope: {
         count: '=',
         hideCount: '@',
+        alwaysShow: '@',
         animation: '@',
         appearAnimation: '@',
         disappearAnimation: '@',
