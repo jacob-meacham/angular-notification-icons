@@ -189,6 +189,7 @@ If you *always* want the count number to appear, even when 0 or negative, you ca
 <notification-icon count='myCount' always-show='true'>
   ...
 </notification-icon>
+```
 
 [Live Demo](http://jemonjam.com/angular-notification-icons#always-show)
 
