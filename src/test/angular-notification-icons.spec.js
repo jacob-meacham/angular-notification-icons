@@ -17,11 +17,7 @@ describe('angular-notifications-icon', function() {
       sandbox = sinon.sandbox.create();
 
       element = { name: 'foo' };
-      angularElement = {
-        find: function() {
-          return element;
-        }
-      };
+      angularElement = { };
     });
 
     afterEach(function() {
@@ -52,11 +48,13 @@ describe('angular-notifications-icon', function() {
     });
 
     it('should initialize with an element', function() {
-      var findSpy = spyOn(angularElement, 'find');
+      var jqElement = [angularElement];
+      angularElement.querySelector = function() { };
+      var selectorSpy = spyOn(angularElement, 'querySelector');
 
       var ctrl = $controller('NotificationDirectiveController', scope);
-      ctrl.init(angularElement);
-      findSpy.firstCall.args.should.eql(['.angular-notifications-icon']);
+      ctrl.init(jqElement);
+      selectorSpy.firstCall.args.should.eql(['.angular-notifications-icon']);
     });
 
     it('should set a clear trigger if specified', function() {
@@ -72,6 +70,7 @@ describe('angular-notifications-icon', function() {
       sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope, {clearTrigger: 'mouseover'});
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
 
       ctrl.count = 10;
@@ -85,6 +84,7 @@ describe('angular-notifications-icon', function() {
       var addClassStub = sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope);
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -107,6 +107,7 @@ describe('angular-notifications-icon', function() {
       var addClassStub = sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope, {appearAnimation: 'some-animation'});
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -129,6 +130,7 @@ describe('angular-notifications-icon', function() {
       var addClassStub = sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope);
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -150,6 +152,7 @@ describe('angular-notifications-icon', function() {
       var addClassStub = sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope, {updateAnimation: 'some-animation'});
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -171,6 +174,7 @@ describe('angular-notifications-icon', function() {
       var addClassStub = sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope, {animation: 'some-animation'});
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -193,6 +197,7 @@ describe('angular-notifications-icon', function() {
       var addClassStub = sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope, {animation: 'some-animation'});
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -211,6 +216,7 @@ describe('angular-notifications-icon', function() {
     it('should disappear if visible and the count goes to or below 0', function() {
       var ctrl = $controller('NotificationDirectiveController', scope, {});
       spyOn(element, 'removeClass');
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -227,6 +233,7 @@ describe('angular-notifications-icon', function() {
       var addClassStub = sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope, {disappearAnimation: 'some-animation'});
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -250,6 +257,7 @@ describe('angular-notifications-icon', function() {
       var cancelStub = sandbox.stub($animate, 'cancel');
 
       var ctrl = $controller('NotificationDirectiveController', scope);
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -268,6 +276,7 @@ describe('angular-notifications-icon', function() {
       sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope, {wideThreshold: 10});
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
@@ -283,6 +292,7 @@ describe('angular-notifications-icon', function() {
       sandbox.stub($animate, 'addClass').returns(deferred.promise);
 
       var ctrl = $controller('NotificationDirectiveController', scope, {wideThreshold: 10});
+      sandbox.stub(ctrl, 'getElement').returns(element);
       ctrl.init(angularElement);
       scope.$scope.self = ctrl;
 
