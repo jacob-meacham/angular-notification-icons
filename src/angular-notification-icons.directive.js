@@ -17,7 +17,7 @@
     };
 
     self.init = function(element) {
-      self.$element = element.find('.angular-notifications-icon');
+      self.$element = angular.element(element[0].querySelector('.angular-notifications-icon'));
       if (self.clearTrigger) {
         element.on(self.clearTrigger, function() {
           self.count = 0;

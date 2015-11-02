@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('angular-notification-icons.demo', ['ngRoute', 'angular-notification-icons', 'ngAnimate', 'angular-notification-icons.demo.controllers']);
+var app = angular.module('angular-notification-icons.demo', ['ngRoute', 'hljs', 'angular-notification-icons', 'ngAnimate', 'angular-notification-icons.demo.controllers']);
 
 // Pre-define modules
 angular.module('angular-notification-icons.demo.controllers', []);
