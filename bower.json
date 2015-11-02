@@ -9,7 +9,7 @@
     "angular-bootstrap": "0.12.1",
     "fontawesome": "4.3.0",
     "angular-highlightjs": "0.4.1",
-    "angular-notification-icons": "git://github.com/jacob-meacham/angular-notification-icons#develop"
+    "angular-notification-icons": "0.4.3"
   },
   "resolutions": {
     "angular": "1.4.7"

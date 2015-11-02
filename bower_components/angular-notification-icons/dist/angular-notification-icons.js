@@ -22,8 +22,12 @@ angular.module("angular-notification-icons.tpls").run(["$templateCache", functio
       disappear: self.disappearAnimation
     };
 
+    self.getElement = function(element) {
+      return angular.element(element[0].querySelector('.angular-notifications-icon'));
+    };
+
     self.init = function(element) {
-      self.$element = element.find('.angular-notifications-icon');
+      self.$element = self.getElement(element);
       if (self.clearTrigger) {
         element.on(self.clearTrigger, function() {
           self.count = 0;
