@@ -10,6 +10,7 @@ var options = {
   src: 'src',
   dist: 'dist',
   tmp: '.tmp',
+  root: '.',
   errorHandler: function(title) {
     return function(err) {
       gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
@@ -23,7 +24,7 @@ var options = {
 };
 
 wrench.readdirSyncRecursive('./gulp').filter(function(file) {
-  return (/\.(js|coffee)$/i).test(file);
+  return (/\.js$/i).test(file);
 }).map(function(file) {
   require('./gulp/' + file)(options);
 });
