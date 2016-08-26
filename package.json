@@ -28,7 +28,7 @@
     "directive",
     "notification"
   ],
-  "dependencies": {
+  "peerDependencies": {
     "angular": ">1.3.0"
   },
   "devDependencies": {
