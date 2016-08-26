@@ -4,7 +4,7 @@
   } else if (typeof exports === 'object') {
     module.exports = factory(require('angular'));
   } else {
-    root.AngularNotificationIcons = factory(root.angular);
+    root.returnExports = factory(root.angular);
   }
 }(this, function(angular) {
 'use strict';
@@ -129,5 +129,5 @@ angular.module('angular-notification-icons')
   .controller('NotificationDirectiveController', ['$scope', '$animate', '$q', NotificationDirectiveController])
   .directive('notificationIcon', notificationDirective);
 
-return AngularNotificationIcons;
+return { NotificationDirectiveController: NotificationDirectiveController, notificationDirective: notificationDirective };
 }));

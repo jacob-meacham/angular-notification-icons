@@ -14,18 +14,35 @@ Add notification popups to any element http://jemonjam.com/angular-notification-
 ```
 
 ## Getting Started
-### 1. Install bower components
+### 1. Install components
+
+Bower:
 ```shell
 bower install angular-notification-icons --save
 ```
 
+npm:
+```shell
+npm install angular-notification-icons --save
+```
+
 ### 2. Add css and scripts
+Bower:
 ```html
-<link rel="stylesheet" href="bower_components/angular-notification-icons/angular-notification-icons.min.css">
+<link rel="stylesheet" href="bower_components/angular-notification-icons/dist/angular-notification-icons.min.css">
 
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script> <!-- Not required, but recommended -->
-<script src="bower_components/angular-notification-icons/angular-notification-icons.min.js"></script>
+<script src="bower_components/angular-notification-icons/dist/angular-notification-icons.min.js"></script>
+```
+
+npm:
+```html
+<link rel="stylesheet" href="node_modules/angular-notification-icons/dist/angular-notification-icons.min.css">
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script> <!-- Not required, but recommended -->
+<script src="bower_components/angular-notification-icons/dist/angular-notification-icons.min.js"></script>
 ```
 
 ### 3. Add a dependency to your app
@@ -45,7 +62,18 @@ angular-notification-icons is an angular directive that adds a notification popu
 angular-notification-icons has been tested with angular 1.3.x, 1.4.x, and 1.5.x. It will probably work with most recent versions of angular and angular-animate.
 
 ## Demo App
-To run the demo app, run `npm install`, and then `gulp serve`.
+To run the demo app, run `npm install`, `bower install` and then `gulp serve`.
+
+## Webpack and ES6
+angular-notification-icons can be used in a webpack Angular application. To the top of your main application, add:
+```
+import angular from 'angular'
+import 'angular-animate'
+import 'angular-notification-icons'
+import 'angular-notification-icons/dist/angular-notification-icons.css'
+// Can also use less with a less-loader:
+// import 'angular-notification-icons/src/less/angular-notification-icons.less'
+```
 
 ## Basic Usage
 
@@ -205,4 +233,5 @@ This will change the shape to a pill once myCount >= 10.
 
 [Live Demo](http://jemonjam.com/angular-notification-icons#pill)
 
-###
+## Helping Out
+Pull requests are gladly accepted! Be sure to run `npm run build` to ensure that your PR is lint-free and all the tests pass.

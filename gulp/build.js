@@ -14,13 +14,13 @@ module.exports = function(options) {
   });
 
   // TODO: Combine all of these pipes
-  gulp.task('templates', function() {
+  gulp.task('copy:templates', function() {
     return gulp.src(options.src + '/**/*.html')
        .pipe(templateCache({module: 'angular-notification-icons.tpls'}))
        .pipe(gulp.dest(options.tmp + '/templateCache'));
   });
 
-  gulp.task('build', ['scripts:jshint', 'templates'], function() {
+  gulp.task('build', ['scripts:jshint', 'copy:templates'], function() {
     gulp.src([options.src + '/**/*.js', options.tmp + '/templateCache/*.js', '!' + options.src + '/**/*.spec.js'])
       .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'))
       .pipe($.concat('angular-notification-icons.js'))
@@ -33,10 +33,10 @@ module.exports = function(options) {
           ]
         },
         exports: function(file) {
-          return 'AngularNotificationIcons'
+          return '{ NotificationDirectiveController: NotificationDirectiveController, notificationDirective: notificationDirective }'
         },
         namespace: function(file) {
-          return 'AngularNotificationIcons'
+          return 'returnExports'
         }
       }))
       .pipe(gulp.dest(options.dist))
@@ -44,7 +44,7 @@ module.exports = function(options) {
       .pipe($.rename('angular-notification-icons.min.js'))
       .pipe(gulp.dest(options.dist));
 
-    return gulp.src(options.src + '/css/angular-notification-icons.less')
+    return gulp.src(options.src + '/less/angular-notification-icons.less')
       .pipe($.less()).on('error', options.errorHandler('Less'))
       .pipe($.autoprefixer()).on('error', options.errorHandler('Autoprefixer'))
       .pipe($.rename('angular-notification-icons.css'))
