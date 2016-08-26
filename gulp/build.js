@@ -24,6 +24,21 @@ module.exports = function(options) {
     gulp.src([options.src + '/**/*.js', options.tmp + '/templateCache/*.js', '!' + options.src + '/**/*.spec.js'])
       .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'))
       .pipe($.concat('angular-notification-icons.js'))
+      .pipe($.umd({
+        dependencies: function(file) {
+          return [
+            {
+              name: 'angular'
+            }
+          ]
+        },
+        exports: function(file) {
+          return 'AngularNotificationIcons'
+        },
+        namespace: function(file) {
+          return 'AngularNotificationIcons'
+        }
+      }))
       .pipe(gulp.dest(options.dist))
       .pipe($.uglify())
       .pipe($.rename('angular-notification-icons.min.js'))
