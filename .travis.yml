@@ -1,6 +1,9 @@
 language: node_js
-node_js:
-  - '0.10'
-before_install:
-  - npm install -g bower
-script: gulp ci
+cache:
+  directories:
+    - node_modules
+    - bower_components
+install:
+  - npm install
+  - node_modules/.bin/bower install
+script: npm run ci
