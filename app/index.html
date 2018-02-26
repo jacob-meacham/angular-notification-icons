@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- bower:css -->
     <!-- run `gulp inject` to automatically populate bower styles dependencies -->
     <!-- endbower -->
@@ -79,9 +80,9 @@
         </div>
 
         <div class="buttons">
-          <button class="btn btn-default" ng-click="vm.animationsPending = vm.animationsPending + 1">Add Notification</button>
+          <button class="btn btn-dark" ng-click="vm.animationsPending = vm.animationsPending + 1">Add Notification</button>
 
-          <button class="btn btn-default" ng-click="vm.animationsPending = 0">Clear Notifications</button>
+          <button class="btn btn-dark" ng-click="vm.animationsPending = 0">Clear Notifications</button>
         </div>
 
         <div class="code">
@@ -113,9 +114,9 @@
         </notification-icon>
 
         <div class="buttons">
-          <button class="btn btn-default" ng-click="vm.customPending = vm.customPending + 1">Add Notification</button>
+          <button class="btn btn-dark" ng-click="vm.customPending = vm.customPending + 1">Add Notification</button>
 
-          <button class="btn btn-default" ng-click="vm.customPending = 0">Clear Notifications</button>
+          <button class="btn btn-dark" ng-click="vm.customPending = 0">Clear Notifications</button>
         </div>
 
         <div class="code">
@@ -166,28 +167,28 @@
         <div class="row">
           <div class="col-md-2">
             <notification-icon ng-init='vm.mycount' count='vm.domCount' clear-trigger='click'>
-              <button class="btn btn-default">Click to Clear</button>
+              <button class="btn btn-dark">Click to Clear</button>
             </notification-icon>
           </div>
           <div class="col-md-2">
             <notification-icon count='vm.domCount' clear-trigger='mouseover'>
-              <button class="btn btn-default">Hover to Clear</button>
+              <button class="btn btn-dark">Hover to Clear</button>
             </notification-icon>
           </div>
         </div>
 
         <div class="buttons">
-          <button class="btn btn-default" ng-click="vm.domCount = vm.domCount + 1">Add Notification</button>
+          <button class="btn btn-dark" ng-click="vm.domCount = vm.domCount + 1">Add Notification</button>
         </div>
 
         <div class="code">
           <div hljs>
 <notification-icon ng-init='vm.mycount' count='vm.domCount' clear-trigger='click'>
-  <button class="btn btn-default">Click to Clear</button>
+  <button class="btn btn-dark">Click to Clear</button>
 </notification-icon>
 
 <notification-icon count='vm.domCount' clear-trigger='mouseover'>
-  <button class="btn btn-default">Hover to Clear</button>
+  <button class="btn btn-dark">Hover to Clear</button>
 </notification-icon>
           </div>
         </div>
@@ -201,9 +202,9 @@
         </notification-icon>
 
         <div class="buttons">
-          <button class="btn btn-default" ng-click="vm.hiddenPending = vm.hiddenPending + 1">Add Notification</button>
+          <button class="btn btn-dark" ng-click="vm.hiddenPending = vm.hiddenPending + 1">Add Notification</button>
 
-          <button class="btn btn-default" ng-click="vm.hiddenPending = 0">Clear Notifications</button>
+          <button class="btn btn-dark" ng-click="vm.hiddenPending = 0">Clear Notifications</button>
         </div>
 
         <div class="code">
@@ -223,9 +224,9 @@
         </notification-icon>
 
         <div class="buttons">
-          <button class="btn btn-default" ng-click="vm.alwaysShowCount = vm.alwaysShowCount + 1">Add Notification</button>
+          <button class="btn btn-dark" ng-click="vm.alwaysShowCount = vm.alwaysShowCount + 1">Add Notification</button>
 
-          <button class="btn btn-default" ng-click="vm.alwaysShowCount = (vm.alwaysShowCount - 1)">Remove Notification</button>
+          <button class="btn btn-dark" ng-click="vm.alwaysShowCount = (vm.alwaysShowCount - 1)">Remove Notification</button>
         </div>
 
         <div class="code">
@@ -280,7 +281,7 @@ angular.module('MyApp', ['angular-notification-icons']);
         </div>
       </div>
     </div>
-    
+
     <!-- bower:js -->
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
     <!-- endbower -->
