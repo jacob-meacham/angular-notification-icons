@@ -17,6 +17,7 @@
   padding-top: 3px;
   min-width: 25px;
   height: 25px;
+  line-height: 1.15;
   background: red;
   color: white;
   -webkit-user-select: none;

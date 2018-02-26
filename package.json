@@ -1,6 +1,6 @@
 {
   "name": "angular-notification-icons",
-  "version": "0.4.4",
+  "version": "1.0.0",
   "description": "angular directive to add notification popups to any element",
   "author": {
     "name": "jemonjam",
@@ -30,6 +30,9 @@
   ],
   "peerDependencies": {
     "angular": ">1.3.0"
+  },
+  "engines": {
+    "node" : "<=5.4.0"
   },
   "devDependencies": {
     "bower": "^1.7.9",
